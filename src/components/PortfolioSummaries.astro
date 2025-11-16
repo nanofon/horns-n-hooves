@@ -1,0 +1,22 @@
+---
+import PortfolioSummary from "./PortfolioSummary.astro";
+import type { Props as PortfolioProps } from "./PortfolioSummary.astro";
+
+type Props = {
+  portfolios: PortfolioProps[];
+};
+
+const { portfolios } = Astro.props;
+---
+
+<div class="portfolioSummaries">
+  {portfolios.map(portfolio => <PortfolioSummary {...portfolio} />)}
+</div>
+
+<style>
+  .portfolioSummaries {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+</style>

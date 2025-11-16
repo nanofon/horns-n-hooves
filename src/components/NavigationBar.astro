@@ -1,0 +1,75 @@
+---
+import ThemeToggler from "../components/ThemeToggler.astro";
+---
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/portfolios">Portfolios</a>
+    </li>
+    <li>
+      <a href="/analytics">Analytics</a>
+    </li>
+    <li>
+      <a href="/philosophy">Philosophy</a>
+    </li>
+    <li>
+      <a href="/about">About us</a>
+    </li>
+    <li>
+      <a href="/contact">Contact</a>
+    </li>
+  </ul>
+  <ThemeToggler />
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: flex-start;
+    padding: 2rem 0;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 auto 0 0;
+  }
+
+  nav li {
+    opacity: 0.8;
+    list-style: none;
+    font-size: 0.95rem;
+  }
+
+  a {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--grey-400);
+  }
+
+  a:hover {
+    color: var(--grey-900);
+  }
+
+  a.active {
+    background: var(--grey-900);
+    color: var(--background);
+  }
+</style>
+
+<script>
+  const { pathname } = window.location;
+  const activeNavigationElement = document.querySelector(
+    `nav a[href="${pathname}"]`
+  );
+
+  if(activeNavigationElement){
+    activeNavigationElement.classList.add("active");
+  }
+</script>

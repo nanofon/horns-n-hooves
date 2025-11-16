@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import NavigationBar from "../components/NavigationBar.astro";
+import { COMPANY_NAME } from "../constants";  
+
+type Props = {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={`${COMPANY_NAME} asset management website`} />
+    <title>{`${COMPANY_NAME}: ${title}`}</title>
+    <script is:inline>
+      const COLOR_MODE = "COLOR_MODE";
+      const DARK_THEME_CLASS = "dark";
+      const LIGHT_THEME = "light";
+      const DARK_THEME = "dark";
+
+      const rootElement = document.documentElement;
+
+      const getInitialColorMode = () => {
+        const savedColorMode = window.localStorage.getItem(COLOR_MODE);
+        if (savedColorMode) {
+          return savedColorMode;
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+          return DARK_THEME;
+        }
+        return LIGHT_THEME;
+      };
+
+      const initialColorMode = getInitialColorMode();
+
+      const setInitialColorMode = (mode) => {
+        if (mode === LIGHT_THEME) {
+          rootElement.classList.remove(DARK_THEME_CLASS);
+        } else {
+          rootElement.classList.add(DARK_THEME_CLASS);
+        }
+      };
+
+      setInitialColorMode(initialColorMode);
+    </script>
+  </head>
+  <body>
+    <main>
+      <NavigationBar />
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>
