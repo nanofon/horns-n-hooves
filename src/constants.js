@@ -1,3 +1,4 @@
+export const BASE = "/horns-n-hooves";
 export const COMPANY_NAME = "Horns & Hooves";
 export const DUMMY_PORTFOLIOS = [
   {

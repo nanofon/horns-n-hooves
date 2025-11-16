@@ -1,9 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { BASE } from './src/constants';
 
 // https://astro.build/config
-export default defineConfig({
-  site: 'https://nanofon.github.io', 
-  base: '/horns-n-hooves/', 
-  output: 'static',
-});
+export default defineConfig({});

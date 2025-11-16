@@ -6,7 +6,7 @@ npm install
 npm run dev -> runs dev server on localhost:4321
 
 ## To build run 
-npm run build -> builds to ./dist/          |
+npm run build -> builds to ./dist/
 
 ## To deploy to gh-pages
 git checkout --orphan gh-pages-deploy
