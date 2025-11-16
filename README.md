@@ -9,4 +9,9 @@ npm run dev -> runs dev server on localhost:4321
 npm run build -> builds to ./dist/          |
 
 ## To deploy to gh-pages
-git subtree push --prefix dist origin gh-pages
+git checkout --orphan gh-pages-deploy
+git --work-tree dist add --all
+git commit -m "Deploy: Overwrite gh-pages with latest build"
+git push -f origin gh-pages-deploy:gh-pages
+git checkout main --force
+git branch -D gh-pages-deploy
