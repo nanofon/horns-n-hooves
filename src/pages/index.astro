@@ -1,6 +1,6 @@
 ---
 import Main from "../layouts/Main.astro";
-const logo = "../../logo.png";
+import logo from "../images/logo.png";
 import { COMPANY_NAME, DUMMY_PORTFOLIOS } from "../constants";
 import PortfolioSummaries from "../components/PortfolioSummaries.astro";
 ---
@@ -9,7 +9,7 @@ import PortfolioSummaries from "../components/PortfolioSummaries.astro";
   <div class="header">
     <img
       class="header__picture"
-      src={logo}
+      src={logo.src}
       alt={COMPANY_NAME}
       width="140px"
       height="140px"

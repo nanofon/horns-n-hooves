@@ -1,13 +1,6 @@
-# build output
 dist/
-# generated types
 .astro/
-
-# dependencies
+.vscode
 node_modules/
-
-# environment variables
 .env
 .env.production
-
-.vscode
