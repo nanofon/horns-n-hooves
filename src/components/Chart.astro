@@ -1,0 +1,45 @@
+---
+const { data, labels } = Astro.props;
+const id = Math.random().toString(36);
+---
+
+<canvas id={id} width="400" height="200"></canvas>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script define:vars={{ data, labels, id }}>
+  window.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById(id).getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Returns, %",
+            data: data,
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+            //text: 'Portfolio Returns Over Time',
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  });
+</script>

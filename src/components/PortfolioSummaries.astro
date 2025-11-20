@@ -1,12 +1,8 @@
 ---
 import PortfolioSummary from "./PortfolioSummary.astro";
-import type { Props as PortfolioProps } from "./PortfolioSummary.astro";
+import { fetchPortfolios, fetchReturns } from "../api.js";
 
-type Props = {
-  portfolios: PortfolioProps[];
-};
-
-const { portfolios } = Astro.props;
+const portfolios = await fetchPortfolios();
 ---
 
 <div class="portfolioSummaries">
@@ -17,6 +13,7 @@ const { portfolios } = Astro.props;
   .portfolioSummaries {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    align-items: stretch;
   }
 </style>

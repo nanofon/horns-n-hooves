@@ -2,6 +2,7 @@
 import Main from "../layouts/Main.astro";
 import { COMPANY_NAME, DUMMY_PORTFOLIOS } from "../constants";
 import PortfolioSummaries from "../components/PortfolioSummaries.astro";
+
 ---
 
 <Main title="Home">
@@ -18,10 +19,8 @@ import PortfolioSummaries from "../components/PortfolioSummaries.astro";
       <h2>Asset management | Analytics</h2>
       <p>Beyond the edge of investment</p>
     </div>
-    <PortfolioSummaries
-    portfolios={DUMMY_PORTFOLIOS}
-  />
   </div>
+  <PortfolioSummaries />
 </Main>
 
 <style>
@@ -29,7 +28,7 @@ import PortfolioSummaries from "../components/PortfolioSummaries.astro";
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 1rem 0 3rem 0;
+    padding: 1rem 0 1rem 0;
   }
 
   .header__details {
@@ -42,6 +41,6 @@ import PortfolioSummaries from "../components/PortfolioSummaries.astro";
 
   .header__picture {
     border-radius: 50%;
-    margin: 0 2rem 1rem 0;
+    margin: 0 1rem 1rem 0;
   }
 </style>

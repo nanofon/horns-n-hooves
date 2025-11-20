@@ -1,24 +1,30 @@
 ---
+import { fetchLTMReturns } from '../api';
+import Chart from './Chart.astro';
+
 export type Props = {
-  title: string;
-  subtitle: string;
-  returns: number[];
-  portfolioPage: string;
+  ID: number;
+  Name: string;
+  Description: string;
+  Data?: number[];
+  Labels?: string[];
 };
 
-const { title, subtitle, returns, portfolioPage } = Astro.props;
----
+const { ID, Name, Description } = Astro.props;
 
-<a href={portfolioPage} class="portfolio-summary">
+const { Values } = await fetchLTMReturns(ID);
+
+const Labels = Object.keys(Values).map(date => new Date(date).toLocaleString('default', {month: 'short', year: 'numeric'}));
+const Data = Object.values(Values);
+---
+<a href=`/portfolios/${ID}` class="portfolio-summary">
   <div class="portfolioSummary__inner">
-    <div class="title">{title}</div>
-    <div class="subtitle">{subtitle}</div>
+    <h2 class="title">{Name}</h2>
+    <div class="subtitle">{Description}</div>
+    <Chart data={Data} labels={Labels}/>
     <div>
       <p>Last 12 month return and stddev</p>
       <p>Sharpe ratio</p>
-      <p>
-        Chart with {returns.join(", ")}
-      </p>
     </div>
     <div class="portfolioSummary__footer">&rarr;</div>
   </div>
@@ -31,25 +37,29 @@ const { title, subtitle, returns, portfolioPage } = Astro.props;
     border-radius: var(--radius);
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+    display: block;
+    height: 100%;
   }
 
   .portfolio-summary:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .portfolioSummary__inner {
-    background: var(--background);
+    background-color: rgb(from var(--surface) r g b / 0.9);
     padding: 1.5rem;
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    color: var(--grey-900);
+    color: var(--accent);
+    height: 100%;
+    box-sizing: border-box;
   }
 
   .portfolioSummary__footer {
     margin: auto 0 0 auto;
     padding-top: 2rem;
     font-size: 1.2rem;
-    color: var(--grey-900);
+    color: var(--accent);
   }
 </style>
