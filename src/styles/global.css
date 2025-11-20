@@ -1,5 +1,5 @@
 html {
-  --backgroundImage: url('/niklas-jonasson-n7pLpkhwXFk-unsplash.jpg');
+  --backgroundImage: url('../../public/niklas-jonasson-n7pLpkhwXFk-unsplash.jpg');
   --background: #FBF8F2;
   --surface: #E9E3D7;
   --text: #0A0A0A;
@@ -9,7 +9,7 @@ html {
 }
 
 html.dark {
-  --backgroundImage: url('/victor-furtuna-0mchrVHAYzg-unsplash.jpg');
+  --backgroundImage: url('../../victor-furtuna-0mchrVHAYzg-unsplash.jpg');
   --background: #0A0A0A;
   --surface: #1A1A1C;
   --text: #F8F3E7;
