@@ -9,7 +9,6 @@ type Props = {
 };
 
 const { title } = Astro.props;
-const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <html lang="en">
@@ -54,7 +53,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 
       setInitialColorMode(initialColorMode);
     </script>
-    <base href={BASE_URL}>
+    <base href={import.meta.env.BASE_URL}>
   </head>
   <body>
     <div class="parallax"></div>
