@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/png" href="./logo.png"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.15.3"><meta name="description" content="RS Asset Management asset management website"><title>RS Asset Management: Home</title><script>
+      const COLOR_MODE = "COLOR_MODE";
+      const DARK_THEME_CLASS = "dark";
+      const LIGHT_THEME = "light";
+      const DARK_THEME = "dark";
+
+      const rootElement = document.documentElement;
+
+      const getInitialColorMode = () => {
+        const savedColorMode = window.localStorage.getItem(COLOR_MODE);
+        if (savedColorMode) {
+          return savedColorMode;
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+          return DARK_THEME;
+        }
+        return LIGHT_THEME;
+      };
+
+      const initialColorMode = getInitialColorMode();
+
+      const setInitialColorMode = (mode) => {
+        if (mode === LIGHT_THEME) {
+          rootElement.classList.remove(DARK_THEME_CLASS);
+        } else {
+          rootElement.classList.add(DARK_THEME_CLASS);
+        }
+      };
+
+      setInitialColorMode(initialColorMode);
+    </script><style>html{--backgroundImage: url(/niklas-jonasson-n7pLpkhwXFk-unsplash.jpg);--background: #FBF8F2;--surface: #E9E3D7;--text: #0A0A0A;--text-secondary: #3A3A3C;--accent: #B08D57;--accent-secondary: #B8860B}html.dark{--backgroundImage: url(/victor-furtuna-0mchrVHAYzg-unsplash.jpg);--background: #0A0A0A;--surface: #1A1A1C;--text: #F8F3E7;--text-secondary: #9d9a93;--accent: #B08D57;--accent-secondary: #4d305e}body{font-family:sans-serif;padding:0 .5rem;color:var(--text);background-color:var(--background);transition:background-color .3s ease,color .3s ease}.parallax{z-index:-1;position:absolute;top:0;left:0;width:100%;height:110%;background-image:var(--backgroundImage);background-size:cover;transition:background-image .3s ease,color .3s ease}h1{font-size:3rem;line-height:1;color:var(--accent)}h1+h2{font-size:1.1rem;opacity:.9;font-weight:400}h2{line-height:0;color:var(--accent-secondary)}main{height:100vh}p,li{font-size:1rem;color:var(--text-secondary);opacity:.8}li{margin:1rem 0}footer[data-astro-cid-sz7xmlte]{padding:3rem 0;text-align:center;font-size:.9rem}button[data-astro-cid-ef2qs43u]{cursor:pointer;border-radius:10px;border:0;padding:5px 10px;transition:all .2s ease-in-out}button[data-astro-cid-ef2qs43u]:hover{transform:scale(1.1)}button[data-astro-cid-ef2qs43u]:active{transform:scale(1)}.sun[data-astro-cid-ef2qs43u]{fill:transparent}.dark .sun[data-astro-cid-ef2qs43u]{fill:#000}.dark .moon[data-astro-cid-ef2qs43u]{fill:transparent}nav[data-astro-cid-xkrhstpm]{display:flex;align-items:flex-start;padding:2rem 0}ul[data-astro-cid-xkrhstpm]{display:flex;flex-wrap:wrap;padding:0;margin:0 auto 0 0}nav[data-astro-cid-xkrhstpm] li[data-astro-cid-xkrhstpm]{opacity:.8;list-style:none;font-size:.95rem}a[data-astro-cid-xkrhstpm]{padding:.5rem 1rem;border-radius:10px;text-decoration:none;color:var(--accent)}a[data-astro-cid-xkrhstpm]:hover{color:var(--accent)}a[data-astro-cid-xkrhstpm].active{background:var(--accent);color:var(--background)}
+.portfolio-summary[data-astro-cid-xg7ihxhf]{--radius: 10px;padding:4px;border-radius:var(--radius);text-decoration:none;transition:all .2s ease-in-out;display:block;height:100%}.portfolio-summary[data-astro-cid-xg7ihxhf]:hover{transform:scale(1.05)}.portfolioSummary__inner[data-astro-cid-xg7ihxhf]{background-color:rgb(from var(--surface) r g b / .9);padding:1.5rem;border-radius:var(--radius);display:flex;flex-direction:column;color:var(--accent);height:100%;box-sizing:border-box}.portfolioSummary__footer[data-astro-cid-xg7ihxhf]{margin:auto 0 0 auto;padding-top:2rem;font-size:1.2rem;color:var(--accent)}.portfolioSummaries[data-astro-cid-eeil7yvv]{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));align-items:stretch}
+</style></head> <body> <div class="parallax"></div> <main> <nav data-astro-cid-xkrhstpm> <ul data-astro-cid-xkrhstpm> <li data-astro-cid-xkrhstpm> <a href="/" data-astro-cid-xkrhstpm>Home</a> </li> <li data-astro-cid-xkrhstpm> <a href="/portfolios" data-astro-cid-xkrhstpm>Portfolios</a> </li> <li data-astro-cid-xkrhstpm> <a href="/analytics" data-astro-cid-xkrhstpm>Analytics</a> </li> <li data-astro-cid-xkrhstpm> <a href="/philosophy" data-astro-cid-xkrhstpm>Philosophy</a> </li> <li data-astro-cid-xkrhstpm> <a href="/about" data-astro-cid-xkrhstpm>About us</a> </li> <li data-astro-cid-xkrhstpm> <a href="/contact" data-astro-cid-xkrhstpm>Contact</a> </li> </ul> <button area-label="Theme toggler" data-theme-toggle data-astro-cid-ef2qs43u> <svg width="25px" xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24" data-astro-cid-ef2qs43u> <path class="sun" fill-rule="evenodd" d="M12 17.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11zm0 1.5a7 7 0
+      100-14 7 7 0 000 14zm12-7a.75.75 0 01-.75.75h-2.5a.75.75 0
+      010-1.5h2.5A.75.75 0 0124 12zM4 12a.75.75 0 01-.75.75H.75a.75.75 0
+      010-1.5h2.5A.75.75 0 014 12zm16.485-8.485a.75.75 0 010 1.06l-1.768
+      1.768a.75.75 0 01-1.06-1.06l1.767-1.768a.75.75 0 011.061 0zM6.343
+      17.657a.75.75 0 010 1.06l-1.768 1.768a.75.75 0 11-1.06-1.06l1.767-1.768a.75.75 0
+      011.061 0zM12 0a.75.75 0 01.75.75v2.5a.75.75 0 01-1.5 0V.75A.75.75 0
+      0112 0zm0 20a.75.75 0 01.75.75v2.5a.75.75 0 01-1.5 0v-2.5A.75.75 0
+      0112 20zM3.515 3.515a.75.75 0 011.06 0l1.768 1.768a.75.75 0
+      11-1.06 1.06L3.515 4.575a.75.75 0 010-1.06zm14.142 14.142a.75.75 0
+      011.06 0l1.768 1.768a.75.75 0 01-1.06 1.06l-1.768-1.767a.75.75 0
+      010-1.061z" data-astro-cid-ef2qs43u></path> <path class="moon" fill-rule="evenodd" d="M16.5 6c0 5.799-4.701 10.5-10.5 10.5-.426 0-.847-.026-1.26-.075A8.5 8.5 0 1016.425 4.74c.05.413.075.833.075 1.259zm-1.732-2.04A9.08 9.08 0 0114.999 6a9 9 0 01-11.04 8.768l-.004-.002a9.367 9.367 0 01-.78-.218c-.393-.13-.8.21-.67.602a9.938 9.938 0 00.329.855l.004.01A10.002 10.002 0 0012 22a10.002 10.002 0 004.015-19.16l-.01-.005a9.745 9.745 0 00-.855-.328c-.392-.13-.732.276-.602.67a8.934 8.934 0 01.218.779l.002.005z" data-astro-cid-ef2qs43u></path> </svg> </button>  <script type="module">const n="COLOR_MODE",t="dark",s="light",l="dark",o=document.querySelector("[data-theme-toggle]"),e=document.documentElement;o&&o.addEventListener("click",()=>{e.classList.toggle(t);const c=e.classList.contains(t)?l:s;window.localStorage.setItem(n,c)});</script> </nav>  <script type="module">const{pathname:t}=window.location,a=document.querySelector(`nav a[href="${t}"]`);a&&a.classList.add("active");</script>  <div class="portfolioSummaries" data-astro-cid-eeil7yvv> <a href="/portfolios/1" class="portfolio-summary" data-astro-cid-xg7ihxhf> <div class="portfolioSummary__inner" data-astro-cid-xg7ihxhf> <h2 class="title" data-astro-cid-xg7ihxhf>S&amp;P 500 Buy-n-Hold</h2> <div class="subtitle" data-astro-cid-xg7ihxhf>Simple portfolio to buy and hold SP500 index</div> <canvas id="0.tgf71ejljmg" width="400" height="200"></canvas> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script>(function(){const data = [1000000,967300,996319,973702.5587,929399.09227915,936834.2850173832,987048.6026943149,1033538.5918812172,1039326.407995752,1067076.4230892386,1122030.8588783343,1145930.116172443];
+const labels = ["Dec 2024","Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025","Aug 2025","Sep 2025","Oct 2025","Nov 2025"];
+const id = "0.tgf71ejljmg";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById(id).getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Returns, %",
+            data: data,
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+            //text: 'Portfolio Returns Over Time',
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  });
+})();</script> <div data-astro-cid-xg7ihxhf> <p data-astro-cid-xg7ihxhf>Last 12 month return and stddev</p> <p data-astro-cid-xg7ihxhf>Sharpe ratio</p> </div> <div class="portfolioSummary__footer" data-astro-cid-xg7ihxhf>&rarr;</div> </div> </a> <a href="/portfolios/2" class="portfolio-summary" data-astro-cid-xg7ihxhf> <div class="portfolioSummary__inner" data-astro-cid-xg7ihxhf> <h2 class="title" data-astro-cid-xg7ihxhf>Stocks-Bonds 60/40</h2> <div class="subtitle" data-astro-cid-xg7ihxhf>Portfolio of 60% SP500 stocks and 40% long-term bonds</div> <canvas id="0.esck02dgfbs" width="400" height="200"></canvas> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script>(function(){const data = [1000000,956400,979736.16,987084.1812,959248.40729016,950039.6225801745,964955.2446546832,1008088.7440907476,1011717.8635694742,1019204.5757598884,1069553.2818024268,1086773.089639446];
+const labels = ["Dec 2024","Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025","Aug 2025","Sep 2025","Oct 2025","Nov 2025"];
+const id = "0.esck02dgfbs";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById(id).getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Returns, %",
+            data: data,
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+            //text: 'Portfolio Returns Over Time',
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  });
+})();</script> <div data-astro-cid-xg7ihxhf> <p data-astro-cid-xg7ihxhf>Last 12 month return and stddev</p> <p data-astro-cid-xg7ihxhf>Sharpe ratio</p> </div> <div class="portfolioSummary__footer" data-astro-cid-xg7ihxhf>&rarr;</div> </div> </a> <a href="/portfolios/3" class="portfolio-summary" data-astro-cid-xg7ihxhf> <div class="portfolioSummary__inner" data-astro-cid-xg7ihxhf> <h2 class="title" data-astro-cid-xg7ihxhf>Active Portfolio 01</h2> <div class="subtitle" data-astro-cid-xg7ihxhf>Sample actively managed portfolio</div> <canvas id="0.rctd3blcovn" width="400" height="200"></canvas> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script>(function(){const data = [1000000,1030000,1009400,1009400,999306,899375.4,881387.892,943085.04444,933654.1939956,999009.987575292,1068940.6867055625,1122387.7210408405];
+const labels = ["Dec 2024","Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025","Aug 2025","Sep 2025","Oct 2025","Nov 2025"];
+const id = "0.rctd3blcovn";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById(id).getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Returns, %",
+            data: data,
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+            //text: 'Portfolio Returns Over Time',
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  });
+})();</script> <div data-astro-cid-xg7ihxhf> <p data-astro-cid-xg7ihxhf>Last 12 month return and stddev</p> <p data-astro-cid-xg7ihxhf>Sharpe ratio</p> </div> <div class="portfolioSummary__footer" data-astro-cid-xg7ihxhf>&rarr;</div> </div> </a> <a href="/portfolios/4" class="portfolio-summary" data-astro-cid-xg7ihxhf> <div class="portfolioSummary__inner" data-astro-cid-xg7ihxhf> <h2 class="title" data-astro-cid-xg7ihxhf>Multifactor Quality Stocks + Market Regime</h2> <div class="subtitle" data-astro-cid-xg7ihxhf>This portfolio invests into quality stocks selected based on multiple valuation and operational factors. It is also actively rotating portfolio holdings based on proprietary market regime indicator.</div> <canvas id="0.dka13l2l0h8" width="400" height="200"></canvas> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script>(function(){const data = [1000000,977600,1031074.72,993543.600192,980726.8877495232,996124.2998871907,1037065.0086125543,1052932.1032443263,1065251.408852285,1106583.1635157536,1175301.9779700818,1183294.0314202784];
+const labels = ["Dec 2024","Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025","Aug 2025","Sep 2025","Oct 2025","Nov 2025"];
+const id = "0.dka13l2l0h8";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById(id).getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Returns, %",
+            data: data,
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+            //text: 'Portfolio Returns Over Time',
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  });
+})();</script> <div data-astro-cid-xg7ihxhf> <p data-astro-cid-xg7ihxhf>Last 12 month return and stddev</p> <p data-astro-cid-xg7ihxhf>Sharpe ratio</p> </div> <div class="portfolioSummary__footer" data-astro-cid-xg7ihxhf>&rarr;</div> </div> </a>  </div>   <footer data-astro-cid-sz7xmlte>
+&copy; RS Asset Management, 2025
+</footer>  </main> <script type="module">const n=document.querySelector(".parallax");window.addEventListener("scroll",function(){const t=window.pageYOffset;n.style.transform=`translateY(${t*.5}px)`});</script></body></html>
