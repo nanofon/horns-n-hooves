@@ -1,31 +1,32 @@
 ---
-import { fetchLTMReturns } from '../api';
-import Chart from './Chart.astro';
+import { fetchLTMReturns } from "../api";
+import Chart from "./Chart.astro";
 
 export type Props = {
   ID: number;
   Name: string;
   Description: string;
+  RiskLevelID: number;
   Data?: number[];
   Labels?: string[];
 };
 
-const { ID, Name, Description } = Astro.props;
+const { ID, Name, Description, RiskLevelID } = Astro.props;
 
 const { Values } = await fetchLTMReturns(ID);
 
-const Labels = Object.keys(Values).map(date => new Date(date).toLocaleString('default', {month: 'short', year: 'numeric'}));
+const Labels = Object.keys(Values).map((date) =>
+  new Date(date).toLocaleString("default", { month: "short", year: "numeric" }),
+);
 const Data = Object.values(Values);
 ---
+
 <a href=`/portfolios/${ID}` class="portfolio-summary">
   <div class="portfolioSummary__inner">
-    <h2 class="title">{Name}</h2>
-    <div class="subtitle">{Description}</div>
-    <Chart data={Data} labels={Labels}/>
-    <div>
-      <p>Last 12 month return and stddev</p>
-      <p>Sharpe ratio</p>
-    </div>
+    <h3 class="title">{Name}</h3>
+    <Chart data={Data} labels={Labels} />
+    <h2>Risk: {[...Array(RiskLevelID).keys()].map(id => "🔥")}</h2>
+    <p class="subtitle">{Description}</p>
     <div class="portfolioSummary__footer">&rarr;</div>
   </div>
 </a>
@@ -33,12 +34,11 @@ const Data = Object.values(Values);
 <style>
   .portfolio-summary {
     --radius: 10px;
-    padding: 4px;
+    padding: 0.5rem;
     border-radius: var(--radius);
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-    display: block;
-    height: 100%;
+    box-sizing: border-box;
   }
 
   .portfolio-summary:hover {
@@ -61,5 +61,9 @@ const Data = Object.values(Values);
     padding-top: 2rem;
     font-size: 1.2rem;
     color: var(--accent);
+  }
+
+  .title {
+    display: block;
   }
 </style>
