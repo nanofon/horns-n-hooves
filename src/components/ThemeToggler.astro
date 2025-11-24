@@ -1,5 +1,5 @@
 <button area-label="Theme toggler" data-theme-toggle>
-  <svg width="25px" xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24">
+  <svg width="30px" xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       class="sun"
       fill-rule="evenodd"
@@ -27,10 +27,11 @@
 <style>
   button {
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 15px;
     border: 0;
-    padding: 5px 10px;
     transition: all 0.2s ease-in-out;
+    background: transparent;
+    margin: 1rem;
   }
 
   button:hover {
@@ -46,7 +47,7 @@
   }
 
   :global(.dark) .sun {
-    fill: black;
+    fill: var(--text);
   }
 
   :global(.dark) .moon {

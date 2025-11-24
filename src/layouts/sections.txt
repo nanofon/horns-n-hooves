@@ -1,0 +1,9 @@
+Margin 8vh
+Navbar 12vh
+Section1 80vh:
+  Header 10vh +5vh
+  Hero 20vh +5vh
+Section2 88vh
+Footer 
+
+
