@@ -5,6 +5,7 @@ import { DUMMY_PORTFOLIOS, DUMMY_RETURNS } from "./constants";
 
 
 const fetchPortfolios = async () => {
+  //http://68.210.104.70:8082/api/v1/Portfolios
   const response = await fetch(BACKEND_URL + "/api/v1/Portfolios");
   if (!response.ok) {
     return DUMMY_PORTFOLIOS

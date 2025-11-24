@@ -1,9 +1,15 @@
 ---
 import Main from "../layouts/Main.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
 import PortfolioSummaries from "../components/PortfolioSummaries.astro";
-
+import { HERO_TEXT_SHORT } from "../constants";
+const title="Our portfolios";
+const subtitle="Discreationary managed funds";
 ---
 
-<Main title="Home">
+<Main title="Portfolios">
+  <Header title={title} subtitle={subtitle} />
   <PortfolioSummaries />
+  <Hero text={HERO_TEXT_SHORT} />
 </Main>
