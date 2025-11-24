@@ -23,13 +23,7 @@ const Data = Object.values(Values);
 <a href=`/portfolios/${ID}` class="portfolio-summary">
   <h3 class="title">{Name}</h3>
   <p>
-    Risk: {
-      [
-        ...Array(RiskLevelID)
-          .keys()
-          .map((_) => "🔥"),
-      ]
-    }
+    Risk: {[...Array(RiskLevelID)].keys().map((_) => "🔥")}
   </p>
   <Chart data={Data} labels={Labels} />
   <p>{Description}</p>
@@ -59,6 +53,4 @@ const Data = Object.values(Values);
     font-size: 1.2rem;
     color: var(--accent);
   }
-
-
 </style>
