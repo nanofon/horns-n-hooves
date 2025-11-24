@@ -10,7 +10,7 @@ const id = Math.random().toString(36);
 <script define:vars={{ data, labels, id }}>
   window.addEventListener("DOMContentLoaded", () => {
     const ctx = document.getElementById(id).getContext("2d");
-
+    const chartColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
     new Chart(ctx, {
       type: "line",
       data: {
@@ -31,7 +31,6 @@ const id = Math.random().toString(36);
           },
           title: {
             display: false,
-            //text: 'Portfolio Returns Over Time',
           },
         },
         scales: {
@@ -39,7 +38,9 @@ const id = Math.random().toString(36);
             beginAtZero: false,
           },
         },
+        borderColor: chartColor,
+        tension: 0.3
       },
     });
-  });
+  })
 </script>

@@ -1,0 +1,26 @@
+---
+const { title, description } = Astro.props;
+---
+
+<div class="pillar">
+    <h3>{title}</h3>
+    <p>{description}</p>
+</div>
+
+<style>
+    .pillar {
+        background: rgb(from var(--surface) r g b / 0.9);
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgb(from var(--surface) r g b / 0.8);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        animation: fadeIn 1.4s ease-in;
+    }
+
+    .pillar:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);;
+    }
+</style>
