@@ -25,7 +25,7 @@ const Data = Object.values(Values);
   <h3 class="title">{Name}</h3>
   {
     RiskLevelID ? (
-      <p>Risk: {[...new Array(RiskLevelID)].keys().map((_) => "🔥")}</p>
+      <p>Risk: {[...Array(RiskLevelID)].map((_) => "🔥").join("")}</p>
     ) : ""
   }
   <Chart data={Data} labels={Labels} />
