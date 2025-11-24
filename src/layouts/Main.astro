@@ -53,24 +53,25 @@ const { title } = Astro.props;
 
       setInitialColorMode(initialColorMode);
     </script>
-    <base href={import.meta.env.BASE_URL}>
+    <base href={import.meta.env.BASE_URL} />
   </head>
   <body>
     <div class="parallax"></div>
     <main>
       <NavigationBar />
-      <slot />
+      <slot class="container" />
       <Footer />
     </main>
   </body>
 </html>
 
 <script>
-  const bg = document.querySelector(".parallax");
+  const bg = document.querySelector<HTMLElement>(".parallax");
 
   window.addEventListener("scroll", function () {
-    const scrollPosition = window.pageYOffset;
-
-    bg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+    if (bg) {
+      const scrollPosition = window.pageYOffset;
+      bg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+    }
   });
 </script>

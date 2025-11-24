@@ -2,18 +2,18 @@
 import Main from "../layouts/Main.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import { HERO_TEXT_SHORT, COMPANY_NAME as title } from "../constants";
-import PortfolioSummaries from "../components/PortfolioSummaries.astro";
+import Pillars from "../components/Pillars.astro";
+import { PILLARS, HERO_TEXT_FULL } from "../constants.js";
 import Strategies from "../components/Strategies.astro";
 import Founders from "../components/Founders.astro";
-
-const subtitle = "Asset management and analytics beyond the edge of investment"
+const title = "Investment Philosophy";
+const subtitle = "Disciplined. Systematic. Risk-Aware.";
 ---
 
-<Main title="Home">
+<Main title={title}>
     <Header title={title} subtitle={subtitle} />
-    <Hero text={HERO_TEXT_SHORT} />
-    <PortfolioSummaries />
+    <Hero text={HERO_TEXT_FULL} />
+    <Pillars pillars={PILLARS} />
     <Strategies />
     <Founders />
 </Main>

@@ -5,16 +5,24 @@ import ThemeToggler from "../components/ThemeToggler.astro";
 <nav>
   <ul>
     <li>
+      <img
+        src="../../public/logo.png"
+        height="30"
+        width="30"
+        style="border-radius: 15px; margin: 0 1rem 0 3rem;"
+      />
+    </li>
+    <li>
       <a href="./">Home</a>
     </li>
     <li>
       <a href=`./portfolios`>Portfolios</a>
     </li>
     <li>
-      <a href=`./analytics`>Analytics</a>
+      <a href=`./philosophy`>Philosophy</a>
     </li>
     <li>
-      <a href=`./philosophy`>Philosophy</a>
+      <a href=`./analytics`>Analytics</a>
     </li>
     <li>
       <a href=`./about`>About us</a>
@@ -66,10 +74,10 @@ import ThemeToggler from "../components/ThemeToggler.astro";
 <script>
   const { pathname } = window.location;
   const activeNavigationElement = document.querySelector(
-    `nav a[href="${pathname}"]`
+    `nav a[href="${pathname}"]`,
   );
 
-  if(activeNavigationElement){
+  if (activeNavigationElement) {
     activeNavigationElement.classList.add("active");
   }
 </script>
