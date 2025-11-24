@@ -57,21 +57,22 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="parallax"></div>
-    <main>
+    <div class="snap-container">
       <NavigationBar />
-      <slot class="container" />
+      <slot />
       <Footer />
-    </main>
+    </div>
   </body>
 </html>
 
 <script>
   const bg = document.querySelector<HTMLElement>(".parallax");
-
-  window.addEventListener("scroll", function () {
-    if (bg) {
-      const scrollPosition = window.pageYOffset;
+  const scrollContainer = document.querySelector<HTMLElement>(".snap-container");
+  
+  if (bg && scrollContainer) {
+    scrollContainer.addEventListener("scroll", () => {
+      const scrollPosition = -scrollContainer.scrollTop;
       bg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-    }
-  });
+    });
+  };
 </script>

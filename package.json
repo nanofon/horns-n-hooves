@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy:gh": "cross-env BASE_URL=/horns-n-hooves/ astro build"
+    "deploy:gh": "cross-env BASE_URL=/horns-n-hooves/ astro build && gh-pages -d dist -b gh-pages -r"
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.3",

@@ -5,7 +5,7 @@ import { fetchPortfolios } from "../api.js";
 const portfolios = await fetchPortfolios();
 ---
 
-<section class="portfolioSummaries">
+<section class="portfolioSummaries snap-section">
   {portfolios.map(portfolio => <PortfolioSummary {...portfolio} />)}
 </section>
 

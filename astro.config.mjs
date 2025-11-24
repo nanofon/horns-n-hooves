@@ -2,7 +2,16 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 
+const isBuild = process.argv.includes('build');
+const basePath = isBuild && process.env.BASE_URL ? process.env.BASE_URL : '/';
+
+if (isBuild) {
+  console.log(`Astro build base path set to: ${basePath}`);
+}
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [preact()],
+  base: basePath,
+  site: 'https://nanofon.github.io',
 });

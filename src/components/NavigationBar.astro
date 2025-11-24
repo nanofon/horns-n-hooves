@@ -1,17 +1,11 @@
 ---
 import ThemeToggler from "../components/ThemeToggler.astro";
+import Logo from "./Logo.astro";
 ---
 
 <nav>
+  <Logo />
   <ul>
-    <li>
-      <img
-        src="/logo.png"
-        height="30"
-        width="30"
-        style="border-radius: 15px; margin: 0 1rem 0 3rem;"
-      />
-    </li>
     <li>
       <a href="./">Home</a>
     </li>
@@ -36,22 +30,31 @@ import ThemeToggler from "../components/ThemeToggler.astro";
 
 <style>
   nav {
+    position: fixed;
+    border-radius: var(--radius);
+    top: 0;
+    width: calc(100vw - 3rem);
+    width: calc(100dvw - 3rem);
     display: flex;
     align-items: flex-start;
-    padding: 2rem 0;
+    justify-content: space-between;
+    padding: 0 3rem 0 3rem;
+    background-color: rgb(from var(--background) r g b/0.9);
+    z-index: 50;
   }
 
   ul {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     padding: 0;
-    margin: 0 auto 0 0;
+    margin: 0;
   }
 
   nav li {
     opacity: 0.8;
     list-style: none;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
   }
 
   a {
@@ -75,7 +78,7 @@ import ThemeToggler from "../components/ThemeToggler.astro";
 <script>
   const { pathname } = window.location;
   const activeNavigationElement = document.querySelector(
-    `nav a[href="${pathname}"]`,
+    `nav a[href="${pathname}"]`
   );
 
   if (activeNavigationElement) {

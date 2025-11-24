@@ -2,15 +2,19 @@
 const { title, subtitle } = Astro.props;
 ---
 
-<header>
+<header class="snap-section">
     <h1>{title}</h1>
     <p class="subtitle">{subtitle}</p>
 </header>
 
 <style>
     header {
+        padding: 1rem;
+        height: 10vh;
+        height: 10dvh;
         text-align: center;
-        margin-bottom: 60px;
+        margin-bottom: 3rem;
+        margin-bottom: 3rem;
         animation: fadeIn 1s ease-in;
     }
     .subtitle {
