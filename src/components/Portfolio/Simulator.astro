@@ -1,0 +1,44 @@
+---
+import PortfolioForm from "./PortfolioForm.astro";
+import PortfolioSummary from "./PortfolioSummary.astro";
+import { tsToDate } from "../../utils";
+
+const { ID:PortfolioID, Name, Alias, RiskLevelID, ShortDescription, Description } =
+  Astro.props;
+
+const state = {
+  InitialDeposit: 1000000,
+  MonthlyContribution: 100000,
+  DateStart: tsToDate(
+  new Date(new Date().setFullYear(new Date().getFullYear() - 1))
+)};
+---
+
+<script>
+  const initAMT = document.getElementById("initAMT");
+  const pmt = document.getElementById("PMT");
+  const startDate = document.getElementById("startDate");
+</script>
+
+<div class="container">
+  <PortfolioForm state={state} />
+  <PortfolioSummary
+    ID={PortfolioID}
+    Name={Name}
+    Alias={Alias}
+    ShortDescription={ShortDescription}
+    Description={Description}
+    RiskLevelID={RiskLevelID}
+    InitialDeposit={state.InitialDeposit}
+    DateStart={state.DateStart}
+  />
+</div>
+
+<style>
+  .container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 4fr 5fr;
+    animation: slideUp 2s ease-in-out;
+  }
+</style>

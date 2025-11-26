@@ -1,73 +1,67 @@
-const PORTFOLIO_LIST_CACHE_TTL_MINUTES = 5;
-const PORTFOLIO_RETURNS_CACHE_TTL_MINUTES = 1;
-const BACKEND_URL = "http://68.210.104.70:8082";
+import NodeCache from "node-cache";
 import { DUMMY_PORTFOLIOS, DUMMY_RETURNS } from "./constants";
 
+const BACKEND_URL = "http://68.210.104.70:8082";
 
-const fetchPortfolios = async () => {
-  //http://68.210.104.70:8082/api/v1/Portfolios
-  const response = await fetch(BACKEND_URL + "/api/v1/Portfolios");
-  if (!response.ok) {
-    return DUMMY_PORTFOLIOS
-    //throw new Error("Failed to fetch portfolios");
+const cache = new NodeCache({ stdTTL: 3600, checkperiod: 3600 });
+
+export const getPortfolios = async () => {
+  // http://68.210.104.70:8082/api/v1/Portfolios
+
+  const key = "pflist";
+  const cachedValue = cache.get(key);
+
+  if (!cachedValue) {
+    const response = await fetch(BACKEND_URL + "/api/v1/Portfolios");
+    const data = response.ok ? await response.json() : DUMMY_PORTFOLIOS;
+    cache.set(key, data);
+    return data;
   }
-  const data = await response.json();
-  return data;
+
+  return cachedValue;
 };
 
-// This is a proper function with caching but want to avoid client-side rendering for now
-const getPortfolios = async (localStorage) => {
-  const localPortfolios = localStorage.getItem("portfolios");
-  if (localPortfolios) {
-    const { portfolio, lastUpdated } = JSON.parse(localPortfolios);
-    if (
-      new Date() - new Date(lastUpdated) <
-      PORTFOLIO_LIST_CACHE_TTL_MINUTES * 60 * 1000
-    ) {
-      return portfolio;
-    }
-    const fetchedPortfolios = await fetchPortfolios();
-    localStorage.setItem("portfolios", {
-      portfolio: JSON.stringify(fetchedPortfolios),
-      lastUpdated: new Date().toISOString(),
+export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
+  // http://68.210.104.70:8082/api/v1/portfolios/backtest
+
+  const key = [PortfolioID, InitialDeposit, DateStart.toISOString()].join(".");
+  const cachedValue = undefined; //cache.get(key);
+  
+  if (!cachedValue) {
+    const body = {
+      PortfolioID,
+      InitialDeposit,
+      DateStart: DateStart.toISOString(),
+      DateEnd: new Date().toISOString(),
+    };
+    const response = await fetch(BACKEND_URL + "/api/v1/portfolios/backtest", {
+      method: "POST",
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
+    const data = response.ok ? await response.json() : DUMMY_RETURNS;
+    cache.set(key, data);
+    return data;
   }
-  return fetchedPortfolios;
+
+  return cachedValue;
 };
 
-const fetchReturns = async () => {
-  const response = await fetch(BACKEND_URL + "/api/v1/PortfolioReturns/");
-  if (!response.ok) {
-    return 
-    //throw new Error("Failed to fetch returns");
-  }
-  const data = await response.json();
-  return data;
-};
+export const getPortfolio = async (alias) => {
+  // http://68.210.104.70:8082/api/v1/Portfolios/byalias/sp500
 
-const fetchLTMReturns = async (ID) => {
-  const body = {
-    PortfolioID: parseInt(ID),
-    InitialDeposit: 1000000,
-    DateStart: new Date(
-      new Date().setFullYear(new Date().getFullYear() - 1)
-    ).toISOString(),
-    DateEnd: new Date().toISOString(),
-  };
-  const returns = await fetch(BACKEND_URL + "/api/v1/portfolios/backtest", {
-    method: "POST",
-    headers: {
-      "Accept": "*/*",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-  if (!returns.ok) {
-    return DUMMY_RETURNS;
-    //throw new Error("Failed to fetch LTM returns");
-  }
-  const data = await returns.json();
-  return data;
-};
+  const key = "alias"+alias;
+  const cachedValue = cache.get(key);
 
-export { fetchPortfolios, fetchReturns, fetchLTMReturns };
+  if (!cachedValue) {
+    const response = await fetch(`${BACKEND_URL}/api/v1/Portfolios/byalias/${alias}`);
+    const data = response.ok ? await response.json() : DUMMY_PORTFOLIOS;
+    cache.set(key, data);
+    return data;
+  }
+
+  return cachedValue;
+};
