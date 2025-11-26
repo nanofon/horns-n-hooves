@@ -1,33 +1,36 @@
 ---
-import { fetchLTMReturns } from "../api";
+import { getBacktest } from "../../api";
 import Chart from "./Chart.astro";
 
-export type Props = {
-  ID: number;
-  Name: string;
-  Description: string;
-  RiskLevelID?: number;
-  Data?: number[];
-  Labels?: string[];
-};
+const {
+  ID: PortfolioID,
+  Name,
+  Alias,
+  ShortDescription,
+  Description,
+  RiskLevelID,
+  InitialDeposit,
+  DateStart,
+} = Astro.props;
 
-const { ID, Name, Description, RiskLevelID } = Astro.props;
-
-const { Values } = await fetchLTMReturns(ID);
+const { Values } = await getBacktest(PortfolioID, InitialDeposit, DateStart);
 
 const Labels = Object.keys(Values).map((date) =>
-  new Date(date).toLocaleString("default", { month: "short", year: "numeric" }),
+  new Date(date).toLocaleString("default", { month: "short", year: "numeric" })
 );
 const Data = Object.values(Values);
 ---
 
-<a href=`/portfolios/${ID}` class="portfolio-summary">
+<a href=`/portfolios/${Alias}` class="portfolio-summary">
   <h3 class="title">{Name}</h3>
   {
     RiskLevelID ? (
       <p>Risk: {[...Array(RiskLevelID)].map((_) => "🔥").join("")}</p>
-    ) : ""
+    ) : (
+      ""
+    )
   }
+  <p>{ShortDescription}</p>
   <Chart data={Data} labels={Labels} />
   <p>{Description}</p>
   <div class="portfolioSummary__footer">&rarr;</div>

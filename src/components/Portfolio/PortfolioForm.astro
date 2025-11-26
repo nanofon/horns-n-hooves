@@ -1,0 +1,44 @@
+---
+import InputAmount from "./InputAmount.astro";
+
+const { state } = Astro.props;
+---
+<script>
+  const initAMT = document.getElementById("InitialDeposit");
+  const pmt = document.getElementById("PMT");
+  const startDate = document.getElementById("startDate");
+</script>
+
+<div class="container">
+  <h4>
+    If you invested <InputAmount id="InitialDeposit" state={state} /> in
+    <span id="DateStart">Sep 2020</span><br>
+    and added <InputAmount id="MonthlyContribution" state={state} /> every
+    month<br>this portfolio would have yielded
+  </h4>
+  <span class="amount total" id="endAMT">$1,234,567.89</span>
+</div>
+
+<style>
+  .container {
+    background-color: rgb(from var(--surface) r g b/0.9);
+    padding: 2rem;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    line-height: 3rem;
+    background-color: rgb(from var(--surface) r g b / 0.9);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .total {
+    font-size: 3rem;
+    align-self: center;
+    color: var(--accent-secondary);
+  }
+
+  .date {
+    color: var(--accent);
+    font-size: 2rem;
+  }
+</style>

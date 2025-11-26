@@ -1,0 +1,34 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/Header.astro";
+import Simulator from "../../components/Portfolio/Simulator.astro";
+import { getPortfolio, getPortfolios } from "../../api";
+import { portfolio as portfolioType } from "../../components/Portfolio/portfolio";
+
+export async function getStaticPaths() {
+  const portfolios: portfolioType[] = await getPortfolios();
+  return portfolios.map((portfolio) => ({
+    params: {
+      alias: portfolio["Alias"],
+    },
+  }));
+}
+
+const { alias } = Astro.params;
+const portfolio:portfolioType = await getPortfolio(alias);
+---
+
+<Main title=`Portfolio ${portfolio["Name"]}`>
+  <Header
+    title=`Portfolio ${portfolio["Name"]}`
+    subtitle=`${portfolio["Description"]}`
+  />
+  <Simulator {...portfolio} />
+</Main>
+
+<style>
+  .columns {
+    display: flex;
+    flex-direction: row;
+  }
+</style>

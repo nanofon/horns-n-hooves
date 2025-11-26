@@ -1,0 +1,92 @@
+---
+const { id, state } = Astro.props;
+---
+
+<script>
+  const STEP_AMOUNT = 100000;
+  const numToDollar = (number: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumSignificantDigits: 3,
+    }).format(number);
+
+  const dollarToNum = (dollar: string) =>
+    parseInt(dollar.split(".")[0].replaceAll(",", "").replace("$", "") || "0");
+
+  const controlWrappers =
+    document.querySelectorAll<HTMLElement>(".number-wrapper");
+
+  controlWrappers.forEach((controlWrapper) => {
+    const amountSpan = controlWrapper.querySelector<HTMLElement>(".amount");
+    const upButton =
+      controlWrapper.querySelector<HTMLButtonElement>(".arrow.up");
+    const downButton =
+      controlWrapper.querySelector<HTMLButtonElement>(".arrow.down");
+
+    // Initialize logic only if all parts are found
+    if (amountSpan && upButton && downButton) {
+      const changeValue = (direction: number): void => {
+        const currentValue = dollarToNum(amountSpan.textContent);
+        const newValue = currentValue + direction * STEP_AMOUNT;
+        amountSpan.textContent = numToDollar(newValue < 0 ? 0 : newValue);
+      };
+
+      upButton.addEventListener("click", () => changeValue(1));
+      downButton.addEventListener("click", () => changeValue(-1));
+    }
+  });
+</script>
+
+<div class="number-wrapper">
+  <button class="arrow up">▲</button>
+  <span class="amount" id={id}>$100,000</span>
+  <button class="arrow down">▼</button>
+</div>
+
+<style>
+  .number-wrapper {
+    position: relative;
+    display: inline;
+    border-radius: var(--radius);
+  }
+
+  .arrow {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    color: rgb(from var(--accent) r g b / 0.2);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .arrow:hover {
+    transform: scale(1.1) translateX(-40%);
+    background-color: transparent;
+    color: var(--accent);
+  }
+
+  .up {
+    left: 50%;
+    top: -2rem;
+    transform: translateX(-50%);
+  }
+
+  .down {
+    left: 50%;
+    bottom: -2rem;
+    transform: translateX(-50%);
+  }
+
+  .amount {
+    color: var(--accent-secondary);
+    font-size: 2rem;
+  }
+
+  .number-wrapper:hover {
+    background-color: var(--accent);
+    color: var(--background);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+  }
+</style>

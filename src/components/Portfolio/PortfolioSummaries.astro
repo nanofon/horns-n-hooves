@@ -1,0 +1,33 @@
+---
+import PortfolioSummary from "./PortfolioSummary.astro";
+import { getPortfolios } from "../../api.js";
+import { tsToDate } from "../../utils.js";
+import { portfolio } from "./portfolio";
+
+const portfolios: portfolio[] = await getPortfolios();
+const initialDeposit = 1000000;
+const yearAgo = tsToDate(
+  new Date(new Date().setFullYear(new Date().getFullYear() - 1))
+);
+---
+
+<section class="portfolioSummaries snap-section">
+  {
+    portfolios.map((portfolio) => (
+      <PortfolioSummary
+        {...portfolio}
+        InitialDeposit={initialDeposit}
+        DateStart={yearAgo}
+      />
+    ))
+  }
+</section>
+
+<style>
+  .portfolioSummaries {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    animation: slideUp 2s ease-in-out;
+  }
+</style>
