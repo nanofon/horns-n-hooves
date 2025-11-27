@@ -1,0 +1,42 @@
+.numberWrapper {
+  position: relative;
+  display: inline;
+  border-radius: var(--radius);
+}
+
+.numberWrapper:hover {
+  background-color: var(--accent);
+  color: var(--background);
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+}
+
+.amount {
+  color: var(--accent-secondary);
+  font-size: 2rem;
+}
+
+.arrow {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  color: rgb(from var(--accent) r g b / 0.2);
+  font-size: 2rem;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow:hover {
+  transform: scale(1.1) translateX(-40%);
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.up {
+  top: -2rem;
+}
+
+.down {
+  bottom: -2rem;
+}

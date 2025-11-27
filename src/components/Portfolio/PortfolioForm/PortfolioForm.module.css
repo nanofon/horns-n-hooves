@@ -1,0 +1,43 @@
+.container {
+  background-color: rgb(from var(--surface) r g b/0.9);
+  padding: 2rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  line-height: 3rem;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: rgb(from var(--surface) r g b / 0.9);
+  transition: all 0.2s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+}
+
+.total {
+  font-size: 3rem;
+  align-self: center;
+  color: var(--accent-secondary);
+}
+
+.date {
+  color: var(--accent);
+  font-size: 2rem;
+}
+
+.amount {
+  position: relative;
+  display: inline;
+  border-radius: var(--radius);
+  color: var(--accent-secondary);
+  font-size: 3rem;
+  align-self: center;
+}
+
+.amount:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+}
