@@ -1,24 +1,15 @@
 ---
-import PortfolioSummary from "./PortfolioSummary.astro";
-import { getPortfolios } from "../../api.js";
-import { tsToDate } from "../../utils.js";
-import { portfolio } from "./portfolio";
+import { getPortfolios } from "../../server-api.js";
+import { portfolio as portfolioType } from "./portfolio";
+import { PortfolioSummary } from "./PortfolioSummary";
 
-const portfolios: portfolio[] = await getPortfolios();
-const initialDeposit = 1000000;
-const yearAgo = tsToDate(
-  new Date(new Date().setFullYear(new Date().getFullYear() - 1))
-);
+const portfolios: portfolioType[] = await getPortfolios();
 ---
 
 <section class="portfolioSummaries snap-section">
   {
     portfolios.map((portfolio) => (
-      <PortfolioSummary
-        {...portfolio}
-        InitialDeposit={initialDeposit}
-        DateStart={yearAgo}
-      />
+      <PortfolioSummary portfolioJson={JSON.stringify(portfolio)} client:load />
     ))
   }
 </section>

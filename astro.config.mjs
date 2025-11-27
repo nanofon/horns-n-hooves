@@ -14,4 +14,15 @@ export default defineConfig({
   integrations: [preact()],
   base: basePath,
   site: 'https://nanofon.github.io',
+
+  vite: {
+    resolve: {
+      alias: {
+        'react': 'preact/compat',
+        'react-dom': 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react/jsx-runtime': 'preact/jsx-runtime',
+      }
+    }
+  }
 });
