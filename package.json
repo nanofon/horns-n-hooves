@@ -10,6 +10,7 @@
     "deploy:gh": "cross-env BASE_URL=/horns-n-hooves/ astro build && gh-pages -d dist -b gh-pages -r"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.1",
     "@astrojs/preact": "^4.1.3",
     "astro": "^5.15.3",
     "chart.js": "^4.5.1",
