@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 
+const BACKEND_URL = "http://68.210.104.70:8082";
+
 const isBuild = process.argv.includes('build');
 const basePath = isBuild && process.env.BASE_URL ? process.env.BASE_URL : '/';
 
@@ -9,7 +11,6 @@ if (isBuild) {
   console.log(`Astro build base path set to: ${basePath}`);
 }
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [preact()],
   base: basePath,
@@ -23,6 +24,16 @@ export default defineConfig({
         'react-dom/test-utils': 'preact/test-utils',
         'react/jsx-runtime': 'preact/jsx-runtime',
       }
-    }
+    },
+    server: {
+      proxy: {
+        '/api': {
+          target: BACKEND_URL,
+          changeOrigin: true,
+          secure: false,
+          //rewrite: (path) => path.replace(/^\/api/, '/api/v1'), 
+        },
+      },
+    },
   }
 });

@@ -1,7 +1,7 @@
 //import styles from "./Port.module.css";
 import { useState, useEffect } from "preact/hooks";
 import { Results } from "../Portfolio/Results/Results.jsx";
-import { getBacktest } from "../../client-api.js";
+import { getBacktest } from "./Simulator/getBacktest.js";
 
 export const PortfolioSummary = ({portfolioJson}) => {
   const portfolio = JSON.parse(portfolioJson);

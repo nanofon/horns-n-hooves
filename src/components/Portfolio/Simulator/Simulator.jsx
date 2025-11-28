@@ -2,9 +2,9 @@ import styles from "./Simulator.module.css";
 import { useState, useEffect } from "preact/hooks";
 import { PortfolioForm } from "../../Portfolio/PortfolioForm/PortfolioForm.jsx";
 import { Results } from "../../Portfolio/Results/Results.jsx";
-import { getBacktest } from "../../../client-api.js";
+import { getBacktest } from "./getBacktest.js";
 
-export const Simulator = ({ portfolio, controls = true }) => {
+export const Simulator = ({ portfolio }) => {
   const { ID: PortfolioID } = portfolio;
   const [InitialDeposit, setInitialDeposit] = useState(1000000);
   const [MonthlyContribution, setMonthlyContribution] = useState(100000);
@@ -39,19 +39,15 @@ export const Simulator = ({ portfolio, controls = true }) => {
 
   return (
     <div className={styles.container}>
-      {controls ? (
-        <PortfolioForm
-          InitialDeposit={InitialDeposit}
-          MonthlyContribution={MonthlyContribution}
-          DateStart={DateStart}
-          setInitialDeposit={setInitialDeposit}
-          setMonthlyContribution={setMonthlyContribution}
-          setDateStart={setDateStart}
-          total={data ? data[data.length - 1] : InitialDeposit}
-        />
-      ) : (
-        ""
-      )}
+      <PortfolioForm
+        InitialDeposit={InitialDeposit}
+        MonthlyContribution={MonthlyContribution}
+        DateStart={DateStart}
+        setInitialDeposit={setInitialDeposit}
+        setMonthlyContribution={setMonthlyContribution}
+        setDateStart={setDateStart}
+        total={data ? data[data.length - 1] : InitialDeposit}
+      />
       <Results portfolio={portfolio} data={data} labels={labels} />
     </div>
   );

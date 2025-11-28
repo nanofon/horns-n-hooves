@@ -1,23 +1,19 @@
-import { DUMMY_RETURNS } from "./constants";
-
 const BACKEND_URL = "http://68.210.104.70:8082";
 
 export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   // http://68.210.104.70:8082/api/v1/portfolios/backtest
+  // Query astro's /api and proxy configured in astro.config.mjs will reroute it to backend  
 
   const key = [
     PortfolioID,
     InitialDeposit,
-    DateStart.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-    }),
+    DateStart.toISOString().slice(0,7),
   ].join(".");
 
-  const cache = window.sessionStorage.getItem(key);
+  const cachedValue = window.sessionStorage.getItem(key);
 
-  if (cache) {
-    const { ts, data, labels } = JSON.parse(cache);
+  if (cachedValue) {
+    const { ts, data, labels } = JSON.parse(cachedValue);
     if (new Date() - new Date(ts) < 3600000) {
       return { data, labels };
     }
@@ -39,13 +35,13 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     body: JSON.stringify(body),
   });
 
-  const data = response.ok ? await response.json() : DUMMY_RETURNS;
+  const payload = response.ok ? await response.json() : {};
 
   const result = {
-    data: Object.values(data.Values).map((value) =>
+    data: Object.values(payload.Values).map((value) =>
       value > 0.5 ? Math.round(value) : value
     ),
-    labels: Object.keys(data.Values).map((date) =>
+    labels: Object.keys(payload.Values).map((date) =>
       new Date(date).toLocaleDateString("en-US", {
         year: "numeric",
         month: "short",
@@ -53,6 +49,6 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     ),
   };
 
-  sessionStorage.setItem(key, JSON.stringify({ ...result, ts: new Date() }));
+  sessionStorage.setItem(key, JSON.stringify({ ...result, ts: new Date().toISOString().slice(0,7) }));
   return result;
 };
