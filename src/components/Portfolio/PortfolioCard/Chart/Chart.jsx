@@ -9,11 +9,12 @@ import {
   Tooltip
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { numToDollar } from "../../../utils";
+import { numToDollar } from "../../../../utils";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip);
 
 export const Chart = ({ data, labels }) => {
+
   const options = {
     responsive: true,
     plugins: {

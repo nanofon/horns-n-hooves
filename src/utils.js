@@ -7,12 +7,3 @@ export const numToDollar = (number) =>
 
 export const dollarToNum = (dollars) =>
   parseInt(dollars.split(".")[0].replaceAll(",", "").replace("$", "") || "0");
-
-export const tsToDate = (timestamp) => {
-  const date = new Date(timestamp);
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
-  return date;
-};

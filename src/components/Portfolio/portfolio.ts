@@ -11,8 +11,16 @@ export type portfolio = {
     ShortDescription: string;
     Description: string;
     RiskLevelID: number;
-    IsActive: boolean;
-    IsDeleted: boolean;
-    IsPaper: boolean;
-    links: link[];
 };
+
+/**
+ * PortfolioSummaries
+ *  Portfolio card
+ *    Chart?
+ * Simulator
+ *  Portfolio form
+ *    InputAmount
+ *    InputDate
+ *  Portfolio card
+ *    Chart?
+*/

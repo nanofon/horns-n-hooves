@@ -1,5 +1,5 @@
 import styles from "./InputAmount.module.css";
-import { numToDollar } from "../../../utils";
+import { numToDollar } from "../../../../utils";
 import { h } from "preact";
 
 export const InputAmount = ({ amount, onUp, onDn}) => {

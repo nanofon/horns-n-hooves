@@ -1,0 +1,48 @@
+---
+import { getPortfolios } from "../../server-api.js";
+import { PortfolioCard } from "./PortfolioCard/PortfolioCard.jsx";
+
+const portfolios: [] = await getPortfolios();
+
+const InitialDeposit = 1000000;
+const DateStart = new Date(
+  new Date().setFullYear(new Date().getFullYear() - 1)
+);
+---
+
+<section class="portfolioSummaries snap-section">
+  {
+    portfolios.map((portfolio) => {
+      const {
+        ID: PortfolioID,
+        Name,
+        Alias,
+        ShortDescription,
+        Description,
+        RiskLevelID,
+      } = portfolio;
+      return (
+        <PortfolioCard
+          {PortfolioID}
+          {Name}
+          {Alias}
+          {ShortDescription}
+          {Description}
+          {RiskLevelID}
+          {InitialDeposit}
+          {DateStart}
+          client:load
+        />
+      );
+    })
+  }
+
+  <style>
+    .portfolioSummaries {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      animation: slideUp 2s ease-in-out;
+    }
+  </style>
+</section>

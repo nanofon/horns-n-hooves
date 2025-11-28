@@ -15,15 +15,26 @@ export async function getStaticPaths() {
 }
 
 const { alias } = Astro.params;
-const portfolio:portfolioType = await getPortfolio(alias);
+const {
+  ID: PortfolioID,
+  Name,
+  ShortDescription,
+  Description,
+  RiskLevelID,
+} = await getPortfolio(alias);
 ---
 
-<Main title=`Portfolio ${portfolio["Name"]}`>
-  <Header
-    title=`Portfolio ${portfolio["Name"]}`
-    subtitle=`${portfolio["Description"]}`
+<Main title=`Portfolio ${Name}`>
+  <Header title=`Portfolio ${Name}` subtitle=`${Description}` />
+  <Simulator
+    {PortfolioID}
+    {Name}
+    Alias={alias}
+    {ShortDescription}
+    {Description}
+    {RiskLevelID}
+    client:load
   />
-  <Simulator portfolio={portfolio} client:load />
 </Main>
 
 <style>

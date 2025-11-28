@@ -1,5 +1,5 @@
 import styles from "./PortfolioForm.module.css";
-import { InputAmount } from "../InputAmount/InputAmount";
+import { InputAmount } from "./InputAmount/InputAmount";
 import { numToDollar } from "../../../utils";
 
 export const PortfolioForm = ({

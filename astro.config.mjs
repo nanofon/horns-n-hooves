@@ -2,8 +2,6 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 
-import node from '@astrojs/node';
-
 const isBuild = process.argv.includes('build');
 const basePath = isBuild && process.env.BASE_URL ? process.env.BASE_URL : '/';
 
@@ -27,8 +25,4 @@ export default defineConfig({
       }
     }
   },
-
-  adapter: node({
-    mode: 'standalone'
-  })
 });
