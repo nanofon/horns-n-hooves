@@ -1,4 +1,4 @@
-const BACKEND_URL = ".";
+const API_URL = "./api/";
 
 export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   // http://68.210.104.70:8082/api/v1/portfolios/backtest
@@ -26,14 +26,11 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     DateEnd: new Date().toISOString(),
   };
 
-  const response = await fetch(BACKEND_URL + "/api/v1/portfolios/backtest", {
-    method: "POST",
-    headers: {
-      Accept: "*/*",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
+  const response = await fetch(API_URL + [
+    PortfolioID,
+    InitialDeposit,
+    DateStart.toISOString()
+  ].join("/"));
 
   const payload = response.ok ? await response.json() : {};
 
