@@ -38,7 +38,7 @@ export const PortfolioForm = ({
         <br />
         this portfolio would have yielded
       </h4>
-      <span className={styles.amount}>{numToDollar(total)}</span>
+      <span className={`${styles.amount} ${styles.numberWrapper}`}>{numToDollar(total)}</span>
     </div>
   );
 };

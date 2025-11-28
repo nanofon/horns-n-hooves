@@ -2,17 +2,17 @@
   position: relative;
   display: inline;
   border-radius: var(--radius);
+  color: var(--accent-secondary);
 }
 
 .numberWrapper:hover {
   background-color: var(--accent);
-  color: var(--background);
+  color: var(--text);
   transform: scale(1.05);
   box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
 }
 
 .amount {
-  color: var(--accent-secondary);
   font-size: 2rem;
 }
 

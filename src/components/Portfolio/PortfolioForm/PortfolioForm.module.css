@@ -32,12 +32,14 @@
   display: inline;
   border-radius: var(--radius);
   color: var(--accent-secondary);
-  font-size: 3rem;
   align-self: center;
+  font-size: 3rem;
+  padding: 0.5rem;
 }
 
 .amount:hover {
   background-color: var(--accent);
+  color: var(--text);
   transform: scale(1.05);
   box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
 }

@@ -1,9 +1,3 @@
-type link = {
-  href: string;
-  rel: string;
-  method: string;
-};
-
 export type portfolio = {
     ID: number;
     Name: string;
@@ -14,13 +8,13 @@ export type portfolio = {
 };
 
 /**
- * PortfolioSummaries
- *  Portfolio card
+ * PortfolioList
+ *  PortfolioCard
  *    Chart?
  * Simulator
- *  Portfolio form
+ *  PortfolioForm
  *    InputAmount
  *    InputDate
- *  Portfolio card
+ *  PortfolioCard
  *    Chart?
 */
