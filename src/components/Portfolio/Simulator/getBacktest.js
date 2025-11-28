@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://68.210.104.70:8082";
+const BACKEND_URL = ".";
 
 export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   // http://68.210.104.70:8082/api/v1/portfolios/backtest
