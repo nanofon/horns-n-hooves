@@ -1,3 +1,4 @@
+export const API_URL = "http://68.210.104.70:8082";
 export const COMPANY_NAME = "RS Asset Management";
 export const HERO_TEXT_FULL = `Our investment philosophy is built on a singular principle: <strong
             >maximize returns per unit of risk</strong
