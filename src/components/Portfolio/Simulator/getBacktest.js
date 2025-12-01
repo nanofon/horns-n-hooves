@@ -1,13 +1,13 @@
-import { API_URL } from "../../../constants";
+import { API_URL, DUMMY_RETURNS } from "../../../constants";
 
 export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   // http://68.210.104.70:8082/api/v1/portfolios/backtest
-  // Query astro's /api and proxy configured in astro.config.mjs will reroute it to backend  
+  // Query astro's /api and proxy configured in astro.config.mjs will reroute it to backend
 
   const key = [
     PortfolioID,
     InitialDeposit,
-    DateStart.toISOString().slice(0,7),
+    DateStart.toISOString().slice(0, 7),
   ].join(".");
 
   const cachedValue = window.sessionStorage.getItem(key);
@@ -26,13 +26,17 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     DateEnd: new Date().toISOString(),
   };
 
-  const response = await fetch(API_URL + [
-    PortfolioID,
-    InitialDeposit,
-    DateStart.toISOString()
-  ].join("/"));
+  let payload;
 
-  const payload = response.ok ? await response.json() : {};
+  try {
+    const response = await fetch(
+      API_URL + [PortfolioID, InitialDeposit, DateStart.toISOString()].join("/")
+    );
+    payload = response.ok ? await response.json() : {};
+  } catch (e) {
+    console.log(e);
+    payload = DUMMY_RETURNS;
+  }
 
   const result = {
     data: Object.values(payload.Values).map((value) =>
@@ -46,6 +50,9 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     ),
   };
 
-  sessionStorage.setItem(key, JSON.stringify({ ...result, ts: new Date().toISOString().slice(0,7) }));
+  sessionStorage.setItem(
+    key,
+    JSON.stringify({ ...result, ts: new Date().toISOString().slice(0, 7) })
+  );
   return result;
 };

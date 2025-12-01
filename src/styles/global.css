@@ -11,7 +11,7 @@
 }
 
 html {
-  --backgroundImage: url('../../public/bg-light.png');
+  --backgroundImage: url('bg-light.png');
   --background: #FBF8F2;
   --surface: #E9E3D7;
   --text: #0A0A0A;
@@ -21,7 +21,7 @@ html {
 }
 
 html.dark {
-  --backgroundImage: url('../../public/bg-dark.jpg');
+  --backgroundImage: url('bg-dark.jpg');
   --background: #0A0A0A;
   --surface: #1A1A1C;
   --text: #F8F3E7;
