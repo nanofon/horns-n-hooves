@@ -19,6 +19,10 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     InitialDeposit,
     DateStart: DateStart.toISOString(),
     DateEnd: new Date().toISOString(),
+    CashflowValue: 0,
+    CashflowFrequency: "Monthly",
+    CashflowDirection: "None",
+    CashflowType: "None"
   };
     
   const response = await fetch(API_URL + "/api/v1/portfolios/backtest", {
@@ -31,7 +35,6 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   });
   
   const payload = await response.json();
-  console.log(payload);
 
   const result = {
     data: Object.values(payload.Values).map((value) =>
