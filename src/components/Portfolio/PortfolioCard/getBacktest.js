@@ -1,5 +1,4 @@
-const BACKEND_URL = "http://68.210.104.70:8082";
-import { DUMMY_RETURNS } from "../../../constants";
+import { API_URL } from "../../../constants";
 
 export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   // http://68.210.104.70:8082/api/v1/portfolios/backtest
@@ -22,7 +21,7 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     DateEnd: new Date().toISOString(),
   };
     
-  const response = await fetch(BACKEND_URL + "/api/v1/portfolios/backtest", {
+  const response = await fetch(API_URL + "/api/v1/portfolios/backtest", {
     method: "POST",
     headers: {
       Accept: "*/*",
@@ -31,7 +30,8 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
     body: JSON.stringify(body),
   });
   
-  const payload = response.ok ? await response.json() : DUMMY_RETURNS;
+  const payload = await response.json();
+  console.log(payload);
 
   const result = {
     data: Object.values(payload.Values).map((value) =>
