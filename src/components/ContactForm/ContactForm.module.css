@@ -5,6 +5,7 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: var(--surface);
   background-color: rgb(from var(--surface) r g b / 0.9);
   border-radius: var(--radius);
   color: var(--text);

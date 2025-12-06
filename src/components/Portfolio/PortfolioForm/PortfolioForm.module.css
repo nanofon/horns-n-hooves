@@ -1,4 +1,5 @@
 .container {
+  background-color: var(--surface);
   background-color: rgb(from var(--surface) r g b/0.9);
   padding: 2rem;
   border-radius: var(--radius);
@@ -7,6 +8,7 @@
   line-height: 4rem; /* Doubled from 2rem */
   height: 100%;
   box-sizing: border-box;
+  background-color: var(--surface);
   background-color: rgb(from var(--surface) r g b / 0.9);
   transition: all 0.2s ease-in-out;
 }

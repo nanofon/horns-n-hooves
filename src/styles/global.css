@@ -68,11 +68,13 @@ body {
 
 .snap-container::-webkit-scrollbar {
   width: 0.8rem;
+  background-color: var(--text);
   background-color: rgb(from var(--text) r g b / 0.2);
   z-index: 100;
 }
 
 .snap-container::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
   background-color: rgb(from var(--accent) r g b / 0.7);
   border-radius: 0.4rem;
   border: 1px solid transparent;

@@ -42,7 +42,16 @@
   z-index: 1;
 }
 
-.value:hover {
+@media (hover: hover) {
+  .value:hover {
+    background-color: var(--accent);
+    color: var(--text);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+  }
+}
+
+.value:active {
   background-color: var(--accent);
   color: var(--text);
   transform: scale(1.05);
@@ -72,9 +81,17 @@
 }
 
 /* Hover effects for neighbor */
-.neighbor:hover {
+@media (hover: hover) {
+  .neighbor:hover {
+    color: var(--accent);
+    /* Needs specific transform because we use translateX(-50%) for centering */
+    transform: translateX(-50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.neighbor:active {
   color: var(--accent);
-  /* Needs specific transform because we use translateX(-50%) for centering */
   transform: translateX(-50%) scale(1.1);
   opacity: 1;
 }

@@ -6,7 +6,16 @@
   transition: all 0.3s ease;
 }
 
-.numberWrapper:hover {
+@media (hover: hover) {
+  .numberWrapper:hover {
+    background-color: var(--accent);
+    color: var(--text);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+  }
+}
+
+.numberWrapper:active {
   background-color: var(--accent);
   color: var(--text);
   transform: scale(1.05);
@@ -47,7 +56,15 @@
   transform: translateX(-50%);
 }
 
-.arrow:hover {
+@media (hover: hover) {
+  .arrow:hover {
+    transform: scale(1.1) translateX(-40%);
+    background-color: transparent;
+    color: var(--accent);
+  }
+}
+
+.arrow:active {
   transform: scale(1.1) translateX(-40%);
   background-color: transparent;
   color: var(--accent);
