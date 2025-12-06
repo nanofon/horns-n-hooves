@@ -3,19 +3,19 @@ import Pillar from "./Pillar.astro";
 const { pillars } = Astro.props;
 ---
 
-<div class="pillars">
-    {
-        pillars.map((pillar) => (
-            <Pillar title={pillar.title} description={pillar.description} />
-        ))
-    }
-</div>
+<section class="pillars snap-section">
+  {
+    pillars.map((pillar) => (
+      <Pillar title={pillar.title} description={pillar.description} />
+    ))
+  }
+</section>
 
 <style>
-    .pillars {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-        margin: 2rem 0;
-    }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
 </style>
