@@ -16,6 +16,27 @@
   box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
 }
 
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 1rem;
+    height: auto;
+    line-height: 2.5rem; /* Reduce line-height for wrapped text */
+  }
+
+  .total {
+    font-size: 2rem; /* Reduce total size slightly */
+  }
+
+  .amount {
+    font-size: 2rem;
+  }
+  
+  /* Ensure inputs wrap nicely */
+  .container :global(h4) {
+      white-space: normal;
+  }
+}
 .total {
   font-size: 3rem;
   align-self: center;
