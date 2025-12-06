@@ -4,7 +4,7 @@
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  line-height: 2rem; /* Reduced from 3rem */
+  line-height: 4rem; /* Doubled from 2rem */
   height: 100%;
   box-sizing: border-box;
   background-color: rgb(from var(--surface) r g b / 0.9);
@@ -21,7 +21,7 @@
     width: 100%;
     padding: 1rem;
     height: auto;
-    line-height: 1.5rem; /* Reduced further for mobile */
+    line-height: 3rem; /* Doubled from 1.5rem */
   }
 
   .total {
