@@ -1,7 +1,8 @@
 import styles from "./DatePicker.module.css";
+import { useRef } from "preact/hooks";
 
 export const DatePicker = ({ date, onChange, className }) => {
-  // Body scroll lock removed as component is now inline
+  const touchStartY = useRef(null);
 
   const today = new Date();
   // Max valid date is the 1st of the previous month
@@ -11,32 +12,62 @@ export const DatePicker = ({ date, onChange, className }) => {
     return d > maxDate ? maxDate : d;
   };
 
-  const handleMonthScroll = (e) => {
-    e.preventDefault();
-    const delta = Math.sign(e.deltaY);
-
-    const newDate = new Date(date);
-    newDate.setDate(1);
-    newDate.setMonth(newDate.getMonth() + delta);
-    onChange(clampDate(newDate));
-  };
-
-  const handleYearScroll = (e) => {
-    e.preventDefault();
-    const delta = Math.sign(e.deltaY);
-
-    const newDate = new Date(date);
-    newDate.setDate(1);
-    newDate.setFullYear(newDate.getFullYear() + delta);
-    onChange(clampDate(newDate));
-  };
-
   const getOffsetDate = (baseDate, monthOffset, yearOffset) => {
     const d = new Date(baseDate);
     d.setDate(1);
     if (monthOffset) d.setMonth(d.getMonth() + monthOffset);
     if (yearOffset) d.setFullYear(d.getFullYear() + yearOffset);
     return d;
+  };
+
+  const handleMonthChange = (delta) => {
+    const newDate = new Date(date);
+    newDate.setDate(1);
+    newDate.setMonth(newDate.getMonth() + delta);
+    onChange(clampDate(newDate));
+  };
+
+  const handleYearChangeFull = (delta) => {
+    const newDate = new Date(date);
+    newDate.setDate(1);
+    newDate.setFullYear(newDate.getFullYear() + delta);
+    onChange(clampDate(newDate));
+  };
+
+  const handleMonthScroll = (e) => {
+    e.preventDefault();
+    const delta = Math.sign(e.deltaY);
+    handleMonthChange(delta);
+  };
+
+  const handleYearScroll = (e) => {
+    e.preventDefault();
+    const delta = Math.sign(e.deltaY);
+    handleYearChangeFull(delta);
+  };
+
+  // Touch Handlers
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e, type) => {
+    if (touchStartY.current === null) return;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchEndY - touchStartY.current;
+
+    if (Math.abs(deltaY) > 30) {
+      // Swipe Up (negative) -> Next (+1)
+      // Swipe Down (positive) -> Prev (-1)
+      const direction = deltaY < 0 ? 1 : -1;
+
+      if (type === 'month') {
+        handleMonthChange(direction);
+      } else {
+        handleYearChangeFull(direction);
+      }
+    }
+    touchStartY.current = null;
   };
 
   const currentMonthName = date.toLocaleDateString("en-US", { month: "short" });
@@ -75,6 +106,8 @@ export const DatePicker = ({ date, onChange, className }) => {
         <div
           className={styles.column}
           onWheel={handleMonthScroll}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={(e) => handleTouchEnd(e, 'month')}
           title="Scroll or click to change month"
         >
           <span
@@ -95,6 +128,8 @@ export const DatePicker = ({ date, onChange, className }) => {
         <div
           className={styles.column}
           onWheel={handleYearScroll}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={(e) => handleTouchEnd(e, 'year')}
           title="Scroll or click to change year"
         >
           <span
