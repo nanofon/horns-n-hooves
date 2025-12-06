@@ -36,7 +36,7 @@ export const PortfolioForm = ({
           onDn={() => setMonthlyContribution(lessInt(MonthlyContribution))}
           onChange={setMonthlyContribution}
         />{" "}
-        every month this portfolio would have yielded
+        every month you would have
         <span className={`${styles.amount} ${styles.numberWrapper}`}>
           {numToDollar(total)}
         </span>

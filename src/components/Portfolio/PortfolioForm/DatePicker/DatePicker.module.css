@@ -60,8 +60,8 @@
 
 /* Match InputAmount .arrow style - Position Absolutely to avoid affecting line height */
 .neighbor {
-  font-size: 1.5rem;
-  color: rgb(from var(--accent) r g b / 0.2);
+  font-size: 0.75rem;
+  color: var(--accent);
   opacity: 1;
   cursor: pointer;
   transition: all 0.2s ease;
