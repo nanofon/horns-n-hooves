@@ -19,7 +19,7 @@ export const Simulator = ({
   const [total, setTotal] = useState(InitialDeposit);
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <PortfolioForm
         InitialDeposit={InitialDeposit}
         MonthlyContribution={MonthlyContribution}
@@ -41,6 +41,6 @@ export const Simulator = ({
         DateStart={DateStart}
         onBacktestUpdate={(value) => setTotal(value)}
       />
-    </div>
+    </section>
   );
 };

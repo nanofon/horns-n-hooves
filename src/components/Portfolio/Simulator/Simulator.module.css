@@ -15,13 +15,7 @@
     grid-template-columns: none; /* Reset grid */
     height: 100dvh;
     gap: 1rem;
-    overflow: hidden; /* Prevent scrolling if possible */
-    padding-bottom: 1rem; /* Add some bottom padding if needed */
   }
-
-  /* Make children take available space properly */
-  /* Assuming Card needs more space than Form usually, or 50/50? */
-  /* Let's let them size naturally but shrink if needed? */
 
   .container > * {
     min-height: 0; /* Allow shrinking in flex column */

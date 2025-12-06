@@ -3,12 +3,12 @@ import Main from "../layouts/Main.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import {
-    COMPANY_NAME,
-    HERO_TEXT_SHORT,
-    strategiesTitle,
-    strategiesSubtitle,
-    foundersTitle,
-    foundersSubtitle,
+  COMPANY_NAME,
+  HERO_TEXT_SHORT,
+  strategiesTitle,
+  strategiesSubtitle,
+  foundersTitle,
+  foundersSubtitle,
 } from "../constants";
 import Strategies from "../components/Strategies.astro";
 import Founders from "../components/Founders.astro";
@@ -18,9 +18,9 @@ const subtitle = "Asset management and analytics beyond the edge of investment";
 ---
 
 <Main title="Home">
-    <Header title={COMPANY_NAME} subtitle={subtitle} />
-    <Hero text={HERO_TEXT_SHORT} />
-    <PortfolioList />
-    <Strategies title={strategiesTitle} subtitle={strategiesSubtitle} />
-    <Founders title={foundersTitle} subtitle={foundersSubtitle} />
+  <Header title={COMPANY_NAME} subtitle={subtitle} />
+  <Hero text={HERO_TEXT_SHORT} />
+  <PortfolioList />
+  <Strategies title={strategiesTitle} subtitle={strategiesSubtitle} />
+  <Founders title={foundersTitle} subtitle={foundersSubtitle} />
 </Main>
