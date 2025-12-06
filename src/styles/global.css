@@ -11,22 +11,22 @@
 }
 
 html {
-  --backgroundImage: url('bg-light.png');
-  --background: #FBF8F2;
-  --surface: #E9E3D7;
-  --text: #0A0A0A;
-  --text-secondary: #3A3A3C;
+  --backgroundImage: url("/bg-light.png");
+  --background: #fbf8f2;
+  --surface: #e9e3d7;
+  --text: #0a0a0a;
+  --text-secondary: #3a3a3c;
   --accent: #99743c;
   --accent-secondary: #a77904;
 }
 
 html.dark {
-  --backgroundImage: url('bg-dark.jpg');
-  --background: #0A0A0A;
-  --surface: #1A1A1C;
-  --text: #F8F3E7;
+  --backgroundImage: url("/bg-dark.jpg");
+  --background: #0a0a0a;
+  --surface: #1a1a1c;
+  --text: #f8f3e7;
   --text-secondary: #9d9a93;
-  --accent: #B08D57;
+  --accent: #b08d57;
   --accent-secondary: #a77904;
 }
 
