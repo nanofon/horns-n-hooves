@@ -1,36 +1,31 @@
-<section class="founders snap-section">
-    <h2>Built by Industry Veterans</h2>
-    <p>
-        Our founding team brings decades of combined experience from some of the
-        world's most successful hedge funds. Having navigated multiple market
-        cycles at top-tier institutions, we understand what separates consistent
-        performers from the rest: discipline, adaptability, and an unwavering
-        focus on risk-adjusted returns. We've built this firm on those
-        principles.
-    </p>
-</section>
+---
+const { title, subtitle } = Astro.props;
+---
+
+<header class="snap-section">
+    <h2>{title}</h2>
+    <p class="subtitle">{subtitle}</p>
+</header>
 
 <style>
-    .founders {
-        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-        padding: 60px 50px;
-        margin-bottom: 50vh;
-        border-radius: 12px;
+    .snap-section {
+        margin: 2rem 0 2rem 0;
+        background-color: rgb(from var(--accent-secondary) r g b/0.7);
+        border-radius: var(--radius);
+    }
+    header {
+        padding: 2rem 0 2rem 0;
         text-align: center;
-        animation: slideUp 1.8s ease-out;
+        animation: fadeIn 1s ease-in;
     }
-
-    .founders h2 {
-        font-size: 2.5em;
-        color: #0a2540;
-        margin-bottom: 20px;
+    h2 {
+        font-weight: 1000;
+        color: var(--background);
+    }
+    .subtitle {
+        font-size: 1.3em;
+        color: var(--surface);
+        font-style: italic;
         font-weight: 300;
-    }
-
-    .founders p {
-        font-size: 1.2em;
-        color: #2c3e50;
-        max-width: 800px;
-        margin: 0 auto;
     }
 </style>

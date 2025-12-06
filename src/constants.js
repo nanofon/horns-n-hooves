@@ -26,3 +26,7 @@ export const PILLARS = [
       "Disciplined exposure to proven risk premia including value, momentum, quality, and carry, dynamically weighted based on market conditions.",
   },
 ];
+export const strategiesTitle = "Our Core Strategies";
+export const strategiesSubtitle = "We operate a diversified set of uncorrelated strategies, each selected for its exceptional risk-adjusted return potential. Only strategies that meet our stringent Sharpe ratio and maximum drawdown criteria are productionized.";
+export const foundersTitle = "Built by Industry Veterans";
+export const foundersSubtitle = "Our founding team brings decades of combined experience from some of the world's most successful hedge funds. Having navigated multiple market cycles at top-tier institutions, we understand what separates consistent performers from the rest: discipline, adaptability, and an unwavering focus on risk-adjusted returns. We've built this firm on those principles.";

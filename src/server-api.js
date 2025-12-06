@@ -5,7 +5,6 @@ export const getPortfolios = async () => {
 
   try {
     const response = await fetch(API_URL + "/api/v1/Portfolios");
-    console.log(response);
     const data = response.ok ? await response.json() : [];
     return data;
   } catch (e) {

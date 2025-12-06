@@ -2,8 +2,10 @@
 import Main from "../layouts/Main.astro";
 import Header from "../components/Header.astro";
 import Founders from "../components/Founders.astro";
+import { foundersTitle, foundersSubtitle } from "../constants";
 ---
+
 <Main title="About us">
 	<Header title="About us" subtitle="A brief history of success" />
-	<Founders />
+	<Founders title={foundersTitle} subtitle={foundersSubtitle} />
 </Main>
