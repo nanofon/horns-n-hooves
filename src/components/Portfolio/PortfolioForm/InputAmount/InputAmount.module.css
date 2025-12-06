@@ -3,6 +3,7 @@
   display: inline;
   border-radius: var(--radius);
   color: var(--accent-secondary);
+  transition: all 0.3s ease;
 }
 
 .numberWrapper:hover {

@@ -34,7 +34,7 @@
   font-size: 1.5rem; /* Match InputAmount .amount */
   font-weight: normal;
   color: var(--accent-secondary);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   margin: 0;
   border-radius: var(--radius);
   padding: 0 0.2rem;

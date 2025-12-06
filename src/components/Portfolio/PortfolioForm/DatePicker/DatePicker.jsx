@@ -37,13 +37,15 @@ export const DatePicker = ({ date, onChange, className }) => {
   const handleMonthScroll = (e) => {
     e.preventDefault();
     const delta = Math.sign(e.deltaY);
-    handleMonthChange(delta);
+    // Inverted: Scroll Down (positive) -> Go to Past (-1)
+    handleMonthChange(-delta);
   };
 
   const handleYearScroll = (e) => {
     e.preventDefault();
     const delta = Math.sign(e.deltaY);
-    handleYearChangeFull(delta);
+    // Inverted: Scroll Down (positive) -> Go to Past (-1)
+    handleYearChangeFull(-delta);
   };
 
   // Touch Handlers
@@ -57,9 +59,9 @@ export const DatePicker = ({ date, onChange, className }) => {
     const deltaY = touchEndY - touchStartY.current;
 
     if (Math.abs(deltaY) > 30) {
-      // Swipe Up (negative) -> Next (+1)
-      // Swipe Down (positive) -> Prev (-1)
-      const direction = deltaY < 0 ? 1 : -1;
+      // Swipe Up (negative) -> Reveals Bottom (Past, -1)
+      // Swipe Down (positive) -> Reveals Top (Future, +1)
+      const direction = deltaY < 0 ? -1 : 1;
 
       if (type === 'month') {
         handleMonthChange(direction);
@@ -112,17 +114,17 @@ export const DatePicker = ({ date, onChange, className }) => {
         >
           <span
             className={styles.neighbor}
-            onClick={() => handleItemClick(prevMonthDate)}
-          >
-            {prevMonthName}
-          </span>
-          <span className={styles.value}>{currentMonthName}</span>
-          <span
-            className={styles.neighbor}
             onClick={() => isNextMonthValid && handleItemClick(nextMonthDate)}
             style={{ visibility: isNextMonthValid ? 'visible' : 'hidden' }}
           >
             {nextMonthName}
+          </span>
+          <span className={styles.value}>{currentMonthName}</span>
+          <span
+            className={styles.neighbor}
+            onClick={() => handleItemClick(prevMonthDate)}
+          >
+            {prevMonthName}
           </span>
         </div>
         <div
@@ -134,17 +136,17 @@ export const DatePicker = ({ date, onChange, className }) => {
         >
           <span
             className={styles.neighbor}
-            onClick={() => handleYearChange(-1)}
-          >
-            {prevYear}
-          </span>
-          <span className={styles.value}>{currentYear}</span>
-          <span
-            className={styles.neighbor}
             onClick={() => isNextYearValid && handleYearChange(1)}
             style={{ visibility: isNextYearValid ? 'visible' : 'hidden' }}
           >
             {nextYear}
+          </span>
+          <span className={styles.value}>{currentYear}</span>
+          <span
+            className={styles.neighbor}
+            onClick={() => handleYearChange(-1)}
+          >
+            {prevYear}
           </span>
         </div>
       </div>
