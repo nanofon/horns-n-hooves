@@ -67,12 +67,13 @@ const { title } = Astro.props;
 
 <script>
   const bg = document.querySelector<HTMLElement>(".parallax");
-  const scrollContainer = document.querySelector<HTMLElement>(".snap-container");
-  
+  const scrollContainer =
+    document.querySelector<HTMLElement>(".snap-container");
+
   if (bg && scrollContainer) {
     scrollContainer.addEventListener("scroll", () => {
       const scrollPosition = -scrollContainer.scrollTop;
       bg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
     });
-  };
+  }
 </script>
