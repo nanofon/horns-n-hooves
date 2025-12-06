@@ -4,7 +4,7 @@
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  line-height: 3rem;
+  line-height: 4rem; /* Doubled from 2rem */
   height: 100%;
   box-sizing: border-box;
   background-color: rgb(from var(--surface) r g b / 0.9);
@@ -21,31 +21,33 @@
     width: 100%;
     padding: 1rem;
     height: auto;
-    line-height: 2.5rem; /* Reduce line-height for wrapped text */
+    line-height: 3rem; /* Doubled from 1.5rem */
   }
 
   .total {
-    font-size: 2rem; /* Reduce total size slightly */
+    font-size: 1.5rem;
   }
 
   .amount {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-  
+
   /* Ensure inputs wrap nicely */
   .container :global(h4) {
-      white-space: normal;
+    white-space: normal;
+    font-size: 1rem;
   }
 }
+
 .total {
-  font-size: 3rem;
+  font-size: 1.5rem; /* Reduced from 3rem */
   align-self: center;
   color: var(--accent-secondary);
 }
 
 .date {
   color: var(--accent);
-  font-size: 2rem;
+  font-size: 1.5rem; /* Reduced from 2rem */
 }
 
 .amount {
@@ -54,7 +56,7 @@
   border-radius: var(--radius);
   color: var(--accent-secondary);
   align-self: center;
-  font-size: 3rem;
+  font-size: 1.5rem; /* Reduced from 3rem */
   padding: 0.5rem;
 }
 

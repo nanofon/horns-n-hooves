@@ -24,12 +24,11 @@ export const PortfolioForm = ({
           onChange={setInitialDeposit}
         />{" "}
         in{" "}
-        <DatePicker 
-            date={DateStart} 
-            onChange={setDateStart} 
-            className={styles.date} 
+        <DatePicker
+          date={DateStart}
+          onChange={setDateStart}
+          className={styles.date}
         />
-        <br />
         and added{" "}
         <InputAmount
           amount={MonthlyContribution}
@@ -37,11 +36,11 @@ export const PortfolioForm = ({
           onDn={() => setMonthlyContribution(lessInt(MonthlyContribution))}
           onChange={setMonthlyContribution}
         />{" "}
-        every month
-        <br />
-        this portfolio would have yielded
+        every month this portfolio would have yielded
+        <span className={`${styles.amount} ${styles.numberWrapper}`}>
+          {numToDollar(total)}
+        </span>
       </h4>
-      <span className={`${styles.amount} ${styles.numberWrapper}`}>{numToDollar(total)}</span>
     </div>
   );
 };

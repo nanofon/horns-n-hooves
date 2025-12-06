@@ -13,11 +13,11 @@
 }
 
 .amount {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .amountInput {
-  font-size: 2rem;
+  font-size: 1.5rem;
   width: 150px;
   background: transparent;
   border: none;
@@ -40,7 +40,7 @@
   border: none;
   background-color: transparent;
   color: rgb(from var(--accent) r g b / 0.2);
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   left: 50%;
   transform: translateX(-50%);
@@ -53,9 +53,9 @@
 }
 
 .up {
-  top: -2rem;
+  top: -1.5rem;
 }
 
 .down {
-  bottom: -2rem;
+  bottom: -1.5rem;
 }

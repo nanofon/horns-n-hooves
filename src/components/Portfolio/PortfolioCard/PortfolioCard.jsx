@@ -13,7 +13,7 @@ export const PortfolioCard = ({
   InitialDeposit,
   MonthlyContribution,
   DateStart,
-  onBacktestUpdate=()=>{}
+  onBacktestUpdate = () => { }
 }) => {
   const [backtest, setBacktest] = useState({});
 
@@ -26,7 +26,7 @@ export const PortfolioCard = ({
         DateStart
       );
       setBacktest(newBacktest);
-      onBacktestUpdate(newBacktest.data[newBacktest.data.length-1]);
+      onBacktestUpdate(newBacktest.data[newBacktest.data.length - 1]);
     } catch (e) {
       console.log(e);
     }
@@ -46,8 +46,10 @@ export const PortfolioCard = ({
       ) : (
         ""
       )}
-      <p>{Description}</p>
-      <div className={styles.footer}>&rarr;</div>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <p>{Description}</p>
+        <div className={styles.footer}>&rarr;</div>
+      </div>
     </a>
   );
 };
