@@ -1,11 +1,12 @@
 import { API_URL } from "../../../constants";
 
-export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
+export const getBacktest = async (PortfolioID, InitialDeposit, MonthlyContribution, DateStart) => {
   // http://68.210.104.70:8082/api/v1/portfolios/backtest
 
   const key = [
     PortfolioID,
     InitialDeposit,
+    MonthlyContribution,
     DateStart.toISOString().slice(0,7),
   ].join(".");
   const cachedValue = sessionStorage.getItem(key);
@@ -17,12 +18,13 @@ export const getBacktest = async (PortfolioID, InitialDeposit, DateStart) => {
   const body = {
     PortfolioID,
     InitialDeposit,
+    MonthlyContribution,
     DateStart: DateStart.toISOString(),
     DateEnd: new Date().toISOString(),
-    CashflowValue: 0,
+    CashflowValue: MonthlyContribution, // Assuming logic implies this mapping based on MonthlyContribution presence
     CashflowFrequency: "Monthly",
-    CashflowDirection: "None",
-    CashflowType: "None"
+    CashflowDirection: "Contribute", // Usually 'Deposit' for contribution? Original was 'None'. Need to check logic.
+    CashflowType: "Fixed" // Original was 'None'. Check assumptions.
   };
     
   const response = await fetch(API_URL + "/api/v1/portfolios/backtest", {

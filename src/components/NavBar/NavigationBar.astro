@@ -1,6 +1,9 @@
 ---
 import ThemeToggler from "./ThemeToggler.astro";
 import Logo from "./Logo.astro";
+import { getPortfolios } from "../../server-api.js";
+
+const portfolios = await getPortfolios();
 ---
 
 <nav>
@@ -14,8 +17,37 @@ import Logo from "./Logo.astro";
     <li>
       <a href="./">Home</a>
     </li>
-    <li>
-      <a href="./portfolios">Portfolios</a>
+    <li class="dropdown">
+      <div class="dropdown-header">
+        <a href="./portfolios" class="dropdown-link">Portfolios</a>
+        <button
+          class="dropdown-toggle-btn"
+          aria-label="Toggle portfolios menu"
+          aria-expanded="false"
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+      <ul class="dropdown-menu" aria-label="Portfolios submenu">
+        {
+          portfolios.map((portfolio) => (
+            <li>
+              <a href={`./portfolios/${portfolio.Alias}`}>{portfolio.Name}</a>
+            </li>
+          ))
+        }
+      </ul>
     </li>
     <li>
       <a href="./philosophy">Philosophy</a>
@@ -60,6 +92,9 @@ import Logo from "./Logo.astro";
     opacity: 0.8;
     list-style: none;
     font-size: 1.2rem;
+    position: relative; /* For dropdown positioning */
+    display: flex; /* Align content */
+    align-items: center;
   }
 
   a {
@@ -67,6 +102,7 @@ import Logo from "./Logo.astro";
     border-radius: 10px;
     text-decoration: none;
     color: var(--accent);
+    display: block;
   }
 
   a:hover {
@@ -76,6 +112,56 @@ import Logo from "./Logo.astro";
 
   a.active {
     background: var(--accent);
+    color: var(--background);
+  }
+
+  /* Dropdown Styles - Default (Desktop) */
+  .dropdown-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-toggle-btn {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(from var(--background) r g b/0.95);
+    min-width: 16rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius);
+    padding: 0.5rem 0;
+    flex-direction: column;
+    z-index: 101;
+    backdrop-filter: blur(10px);
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: flex;
+  }
+
+  .dropdown-menu li {
+    width: 100%;
+    margin: 0;
+  }
+
+  .dropdown-menu a {
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: var(--accent-secondary);
     color: var(--background);
   }
 
@@ -127,6 +213,7 @@ import Logo from "./Logo.astro";
       width: 70%; /* Drawer width */
       height: 100vh; /* Full screen height */
       padding: 20px 0;
+      overflow-y: auto; /* Allow scrolling if menu is long */
 
       /* Use a darker/different background for contrast */
       background-color: var(--background);
@@ -148,12 +235,56 @@ import Logo from "./Logo.astro";
     /* 5. Ensure links fill the drawer width */
     .nav-links li {
       width: 100%;
+      flex-direction: column; /* Stack dropdown vertical */
+      align-items: flex-start;
     }
 
     /* 6. Increase link padding for better touch targets */
     .nav-links li a {
       padding: 1rem 1.5rem;
       border-radius: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .dropdown-header {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .dropdown-toggle-btn {
+      display: block; /* Show on mobile */
+      padding: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .dropdown.active .dropdown-toggle-btn {
+      transform: rotate(180deg);
+    }
+
+    /* Mobile Dropdown styles */
+    /* Override base hover behavior */
+    .dropdown:hover .dropdown-menu {
+      display: none;
+    }
+
+    .dropdown-menu {
+      position: static; /* Flow naturally in the list */
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0.05); /* Slight contrast */
+      width: 100%;
+      padding: 0;
+      display: none; /* Hidden by default */
+    }
+
+    /* Active state (toggled via JS) */
+    .dropdown.active .dropdown-menu {
+      display: flex;
+    }
+
+    .nav-links .dropdown-menu a {
+      padding: 0.5rem 1rem 0.5rem 2.5rem; /* Indent submenu items */
+      font-size: 0.9em;
     }
   }
 </style>
@@ -161,7 +292,7 @@ import Logo from "./Logo.astro";
 <script>
   const { pathname } = window.location;
   const activeNavigationElement = document.querySelector(
-    `nav a[href="${pathname}"]`
+    `nav a[href="${pathname}"]`,
   );
 
   if (activeNavigationElement) {
@@ -180,14 +311,28 @@ import Logo from "./Logo.astro";
       hamburgerToggle.classList.toggle("is-active");
     });
 
-    // Optional: Close the menu when a link is clicked
+    // Close the menu when a link is clicked
     navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener("click", (e) => {
+        // Normal closing logic
         if (navLinks.classList.contains("open")) {
           navLinks.classList.remove("open");
           hamburgerToggle.classList.remove("is-active");
         }
       });
     });
+
+    // Toggle dropdown on arrow click
+    const dropdownToggleBtn = document.querySelector(".dropdown-toggle-btn");
+    if (dropdownToggleBtn) {
+      dropdownToggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent closing menu
+        const li = dropdownToggleBtn.closest(".dropdown");
+        li.classList.toggle("active");
+
+        const isExpanded = li.classList.contains("active");
+        dropdownToggleBtn.setAttribute("aria-expanded", isExpanded.toString());
+      });
+    }
   });
 </script>

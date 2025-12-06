@@ -37,6 +37,7 @@ export const Simulator = ({
         Description={Description}
         RiskLevelID={RiskLevelID}
         InitialDeposit={InitialDeposit}
+        MonthlyContribution={MonthlyContribution}
         DateStart={DateStart}
         onBacktestUpdate={(value) => setTotal(value)}
       />

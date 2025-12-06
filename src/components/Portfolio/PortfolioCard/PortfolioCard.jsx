@@ -11,6 +11,7 @@ export const PortfolioCard = ({
   Description,
   RiskLevelID,
   InitialDeposit,
+  MonthlyContribution,
   DateStart,
   onBacktestUpdate=()=>{}
 }) => {
@@ -21,6 +22,7 @@ export const PortfolioCard = ({
       const newBacktest = await getBacktest(
         PortfolioID,
         InitialDeposit,
+        MonthlyContribution,
         DateStart
       );
       setBacktest(newBacktest);
@@ -32,7 +34,7 @@ export const PortfolioCard = ({
 
   useEffect(() => {
     updateData();
-  }, [PortfolioID, InitialDeposit, DateStart]);
+  }, [PortfolioID, InitialDeposit, MonthlyContribution, DateStart]);
 
   return (
     <a href={`./portfolios/${Alias}`} className={styles.container}>

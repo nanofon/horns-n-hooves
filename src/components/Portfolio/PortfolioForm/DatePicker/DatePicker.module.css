@@ -1,0 +1,66 @@
+.popover {
+  position: relative;
+  display: inline-flex;
+  top: auto;
+  left: auto;
+  transform: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  z-index: 10;
+  width: auto;
+  justify-content: center;
+  gap: 1rem;
+  vertical-align: middle;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: ns-resize;
+  user-select: none;
+  gap: 0;
+  line-height: 1;
+}
+
+/* Label style removed */
+
+.value {
+  font-size: 2rem; /* Match InputAmount .amount */
+  font-weight: normal; /* InputAmount uses default weight I think, or inherit? */
+  color: var(--accent-secondary); /* Match InputAmount numberWrapper? Or check inherited. */
+  transition: all 0.2s ease;
+  margin: 0;
+  border-radius: var(--radius); /* Support background hover */
+  padding: 0 0.2rem; /* Slight padding for box shape */
+}
+
+.value:hover {
+  background-color: var(--accent);
+  color: var(--text);
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+}
+
+/* Match InputAmount .arrow style */
+.neighbor {
+  font-size: 2rem; /* Match arrow size */
+  color: rgb(from var(--accent) r g b / 0.2);
+  opacity: 1; /* Reset opacity as we use color for transparency effect */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 0.8; /* Tighten vertical spacing for neighbors */
+}
+
+.neighbor:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.overlay {
+  display: none; /* remove overlay since it's inline now */
+}

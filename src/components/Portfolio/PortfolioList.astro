@@ -4,7 +4,8 @@ import { PortfolioCard } from "./PortfolioCard/PortfolioCard.jsx";
 
 const portfolios: [] = await getPortfolios();
 
-const InitialDeposit = 1000000;
+const InitialDeposit = 100000;
+const MonthlyContribution = 0;
 const DateStart = new Date(
   new Date().setFullYear(new Date().getFullYear() - 1),
 );
@@ -30,6 +31,7 @@ const DateStart = new Date(
           {Description}
           {RiskLevelID}
           {InitialDeposit}
+          {MonthlyContribution}
           {DateStart}
           client:load
         />

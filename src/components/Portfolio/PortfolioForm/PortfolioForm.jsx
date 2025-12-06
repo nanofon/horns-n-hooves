@@ -1,6 +1,8 @@
 import styles from "./PortfolioForm.module.css";
 import { InputAmount } from "./InputAmount/InputAmount";
 import { numToDollar } from "../../../utils";
+import { DatePicker } from "./DatePicker/DatePicker";
+import { moreInt, lessInt } from "../../../utils";
 
 export const PortfolioForm = ({
   InitialDeposit,
@@ -17,22 +19,23 @@ export const PortfolioForm = ({
         If you invested{" "}
         <InputAmount
           amount={InitialDeposit}
-          onUp={() => setInitialDeposit(InitialDeposit + 100000)}
-          onDn={() => setInitialDeposit(InitialDeposit - 100000)}
+          onUp={() => setInitialDeposit(moreInt(InitialDeposit))}
+          onDn={() => setInitialDeposit(lessInt(InitialDeposit))}
+          onChange={setInitialDeposit}
         />{" "}
         in{" "}
-        <span className={styles.date}>
-          {DateStart.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-          })}
-        </span>
+        <DatePicker 
+            date={DateStart} 
+            onChange={setDateStart} 
+            className={styles.date} 
+        />
         <br />
         and added{" "}
         <InputAmount
           amount={MonthlyContribution}
-          onUp={() => setMonthlyContribution(MonthlyContribution + 100000)}
-          onDn={() => setMonthlyContribution(MonthlyContribution - 100000)}
+          onUp={() => setMonthlyContribution(moreInt(MonthlyContribution))}
+          onDn={() => setMonthlyContribution(lessInt(MonthlyContribution))}
+          onChange={setMonthlyContribution}
         />{" "}
         every month
         <br />
