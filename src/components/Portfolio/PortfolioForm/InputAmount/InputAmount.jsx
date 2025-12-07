@@ -66,7 +66,7 @@ export const InputAmount = ({ amount, onUp, onDn, onChange }) => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <button className={`${styles.arrow} ${styles.up}`} onClick={onUp}>▲</button>
+      <button className={`${styles.controlBtn} ${styles.decrease}`} onClick={onDn}>▼</button>
       {isEditing ? (
         <input
           ref={inputRef}
@@ -86,7 +86,7 @@ export const InputAmount = ({ amount, onUp, onDn, onChange }) => {
           {numToDollar(amount)}
         </span>
       )}
-      <button className={`${styles.arrow} ${styles.down}`} onClick={onDn}>▼</button>
+      <button className={`${styles.controlBtn} ${styles.increase}`} onClick={onUp}>▲</button>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 .numberWrapper {
   position: relative;
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
   border-radius: var(--radius);
   color: var(--accent-secondary);
   transition: all 0.3s ease;
@@ -8,22 +10,22 @@
 
 @media (hover: hover) {
   .numberWrapper:hover {
-    background-color: var(--accent);
     color: var(--text);
     transform: scale(1.05);
-    box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
   }
 }
 
 .numberWrapper:active {
-  background-color: var(--accent);
   color: var(--text);
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
 }
 
 .amount {
   font-size: 1.5rem;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+  margin: 0 0.2rem;
 }
 
 .amountInput {
@@ -31,12 +33,14 @@
   width: 150px;
   background: transparent;
   border: none;
+  border-bottom: 2px dotted var(--accent);
   color: inherit;
   text-align: center;
   font-family: inherit;
   /* Hide arrows in input[type=number] */
   -moz-appearance: textfield;
   appearance: textfield;
+  margin: 0 0.2rem;
 }
 
 .amountInput::-webkit-outer-spin-button,
@@ -45,35 +49,33 @@
   margin: 0;
 }
 
-.arrow {
-  position: absolute;
+.controlBtn {
   border: none;
   background-color: transparent;
-  color: rgb(from var(--accent) r g b / 0.2);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  left: 50%;
-  transform: translateX(-50%);
+  padding: 0;
+  line-height: 1;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.decrease {
+  color: #ff4d4d;
+}
+
+.increase {
+  color: #4dff4d;
 }
 
 @media (hover: hover) {
-  .arrow:hover {
-    transform: scale(1.1) translateX(-40%);
-    background-color: transparent;
-    color: var(--accent);
+  .controlBtn:hover {
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
 
-.arrow:active {
-  transform: scale(1.1) translateX(-40%);
-  background-color: transparent;
-  color: var(--accent);
-}
-
-.up {
-  top: -1.5rem;
-}
-
-.down {
-  bottom: -1.5rem;
+.controlBtn:active {
+  opacity: 1;
+  transform: scale(0.9);
 }

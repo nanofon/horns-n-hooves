@@ -17,85 +17,72 @@
 
 .column {
   position: relative;
-  display: inline-flex; /* Keep it inline to wrap value */
-  flex-direction: column; /* We still want column for DOM order, but visual will change */
+  display: inline-flex;
+  flex-direction: row; /* Horizontal layout */
   align-items: center;
   justify-content: center;
-  cursor: ns-resize;
-  user-select: none;
   gap: 0;
-  line-height: normal; /* Reset line height */
+  line-height: normal;
   vertical-align: middle;
 }
 
 /* Label style removed */
 
 .value {
-  font-size: 1.5rem; /* Match InputAmount .amount */
+  font-size: 1.5rem;
   font-weight: normal;
   color: var(--accent-secondary);
   transition: all 0.3s ease;
-  margin: 0;
-  border-radius: var(--radius);
+  margin: 0 0.2rem;
   padding: 0 0.2rem;
-  position: relative; /* Ensure z-index if needed */
-  z-index: 1;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
 }
 
 @media (hover: hover) {
   .value:hover {
-    background-color: var(--accent);
     color: var(--text);
     transform: scale(1.05);
-    box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
   }
 }
 
 .value:active {
-  background-color: var(--accent);
   color: var(--text);
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
 }
 
-/* Match InputAmount .arrow style - Position Absolutely to avoid affecting line height */
-.neighbor {
-  font-size: 0.75rem;
-  color: var(--accent);
-  opacity: 1;
+.controlBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
   cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.8;
   transition: all 0.2s ease;
-  position: absolute; /* Take out of flow */
-  left: 50%;
-  transform: translateX(-50%);
-  height: 1.5rem; /* Fixed height for positioning calc */
-  line-height: 1rem;
 }
 
-.neighbor:first-child {
-  top: -1.5rem;
+.decrease {
+  color: #ff4d4d;
 }
 
-.neighbor:last-child {
-  bottom: -1.5rem; /* Position below */
+.increase {
+  color: #4dff4d;
 }
 
-/* Hover effects for neighbor */
 @media (hover: hover) {
-  .neighbor:hover {
-    color: var(--accent);
-    /* Needs specific transform because we use translateX(-50%) for centering */
-    transform: translateX(-50%) scale(1.1);
+  .controlBtn:hover {
     opacity: 1;
+    transform: scale(1.2);
   }
 }
 
-.neighbor:active {
-  color: var(--accent);
-  transform: translateX(-50%) scale(1.1);
+.controlBtn:active {
   opacity: 1;
+  transform: scale(0.9);
 }
 
 .overlay {
-  display: none; /* remove overlay since it's inline now */
+  display: none;
 }

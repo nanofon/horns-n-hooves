@@ -112,20 +112,20 @@ export const DatePicker = ({ date, onChange, className }) => {
           onTouchEnd={(e) => handleTouchEnd(e, 'month')}
           title="Scroll or click to change month"
         >
-          <span
-            className={styles.neighbor}
+          <button
+            className={`${styles.controlBtn} ${styles.decrease}`}
+            onClick={() => handleItemClick(prevMonthDate)}
+          >
+            ▼
+          </button>
+          <span className={styles.value}>{currentMonthName}</span>
+          <button
+            className={`${styles.controlBtn} ${styles.increase}`}
             onClick={() => isNextMonthValid && handleItemClick(nextMonthDate)}
             style={{ visibility: isNextMonthValid ? 'visible' : 'hidden' }}
           >
-            {nextMonthName}
-          </span>
-          <span className={styles.value}>{currentMonthName}</span>
-          <span
-            className={styles.neighbor}
-            onClick={() => handleItemClick(prevMonthDate)}
-          >
-            {prevMonthName}
-          </span>
+            ▲
+          </button>
         </div>
         <div
           className={styles.column}
@@ -134,20 +134,20 @@ export const DatePicker = ({ date, onChange, className }) => {
           onTouchEnd={(e) => handleTouchEnd(e, 'year')}
           title="Scroll or click to change year"
         >
-          <span
-            className={styles.neighbor}
+          <button
+            className={`${styles.controlBtn} ${styles.decrease}`}
+            onClick={() => handleYearChange(-1)}
+          >
+            ▼
+          </button>
+          <span className={styles.value}>{currentYear}</span>
+          <button
+            className={`${styles.controlBtn} ${styles.increase}`}
             onClick={() => isNextYearValid && handleYearChange(1)}
             style={{ visibility: isNextYearValid ? 'visible' : 'hidden' }}
           >
-            {nextYear}
-          </span>
-          <span className={styles.value}>{currentYear}</span>
-          <span
-            className={styles.neighbor}
-            onClick={() => handleYearChange(-1)}
-          >
-            {prevYear}
-          </span>
+            ▲
+          </button>
         </div>
       </div>
     </>
