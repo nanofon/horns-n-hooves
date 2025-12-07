@@ -20,3 +20,8 @@
   font-size: 1.2rem;
   color: var(--accent-secondary);
 }
+
+.number {
+  color: var(--accent);
+  font-weight: bold;
+}

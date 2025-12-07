@@ -21,7 +21,7 @@
     width: 100%;
     padding: 1rem;
     height: auto;
-    line-height: 2rem; /* Doubled from 1.5rem */
+    line-height: 2rem;
   }
 
   .total {

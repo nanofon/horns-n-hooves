@@ -39,17 +39,34 @@ export const PortfolioCard = ({
   return (
     <a href={`./portfolios/${Alias}`} className={styles.container}>
       <h3 class="title">{Name}</h3>
-      <p>Risk: {[...Array(RiskLevelID)].map((_) => "🔥").join("")}</p>
-      <p>{ShortDescription}</p>
-      {Object.hasOwn(backtest, "data") ? (
-        <Chart data={backtest.data} labels={backtest.labels} />
-      ) : (
-        ""
-      )}
+      <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
+        <p>Risk:
+          <span style={{ whiteSpace: "nowrap" }} >
+            {[...Array(RiskLevelID)].map((_) => "🔥").join("")}
+          </span>
+        </p>
+        <p>CAGR:{" "}
+          <span className={styles.number}>
+            {Number(backtest.cagr * 100).toFixed(2)}%
+          </span>
+        </p>
+        <p>Max Drawdown:{" "}
+          <span className={styles.number}>
+            {Number(backtest.maxDrawdown * 100).toFixed(2)}%
+          </span>
+        </p>
+      </div>
+      {
+        Object.hasOwn(backtest, "data") ? (
+          <Chart data={backtest.data} labels={backtest.labels} />
+        ) : (
+          ""
+        )
+      }
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <p>{Description}</p>
+        <p>{ShortDescription}</p>
         <div className={styles.footer}>&rarr;</div>
       </div>
-    </a>
+    </a >
   );
 };
