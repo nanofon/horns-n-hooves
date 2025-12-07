@@ -1,0 +1,18 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#111827" />
+  <rect x="188" y="6" width="55" height="142" fill="#10B981" fill-opacity="0.22022827097788433" rx="10" />
+  <circle cx="458" cy="109" r="111" fill="#8B5CF6" fill-opacity="0.2729473371656632" />
+  <circle cx="495" cy="418" r="34" fill="#06B6D4" fill-opacity="0.47991378911918614" />
+  <circle cx="281" cy="359" r="78" fill="#3B82F6" fill-opacity="0.14291447991334094" />
+  <circle cx="422" cy="66" r="99" fill="#3B82F6" fill-opacity="0.21426257154694933" />
+  <rect x="590" y="343" width="176" height="58" fill="#EC4899" fill-opacity="0.2934538521663218" rx="10" />
+  <circle cx="553" cy="106" r="83" fill="#8B5CF6" fill-opacity="0.27212856324801016" />
+  <circle cx="287" cy="497" r="44" fill="#10B981" fill-opacity="0.437193250205813" />
+  <circle cx="456" cy="464" r="56" fill="#10B981" fill-opacity="0.33964432306976305" />
+  <circle cx="128" cy="337" r="99" fill="#EC4899" fill-opacity="0.25124596103001773" />
+  <circle cx="446" cy="519" r="113" fill="#F59E0B" fill-opacity="0.33452609242483244" />
+  <circle cx="88" cy="127" r="98" fill="#3B82F6" fill-opacity="0.4695811332693881" />
+  <circle cx="313" cy="200" r="99" fill="#F59E0B" fill-opacity="0.2426582386896473" />
+  <circle cx="110" cy="270" r="67" fill="#8B5CF6" fill-opacity="0.3628860557107272" />
+  <rect x="125" y="418" width="82" height="155" fill="#F59E0B" fill-opacity="0.20346125424673006" rx="10" />
+</svg>

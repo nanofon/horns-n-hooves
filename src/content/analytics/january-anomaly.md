@@ -2,11 +2,8 @@
 title: "The January Effect: Capital Market Anomalies"
 description: "Why December and January require special attention from investors. Observations on tax-loss harvesting and the turn-of-the-year effect."
 publishDate: 2025-12-07
+image: "/images/analytics/january-anomaly.svg"
 ---
-
-## Turn-of-the-Year Patterns
-
-In the world of quantitative finance, the transition from one calendar year to the next—specifically from December to January—is known for hosting one of the most persistent market anomalies: the **January Effect**.
 
 ### What is it?
 

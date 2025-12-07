@@ -2,11 +2,8 @@
 title: "The Final Frontier: Investment Prospects in Space Mining"
 description: "Beyond Helium-3 and Rare Earths: The economic and scientific race to uncover the geological and potential biological history of the Moon and Mars."
 publishDate: 2025-11-22
+image: "/images/analytics/space-mining.svg"
 ---
-
-## Digging for Answers (and Profit) Off-World
-
-The "Space Rush" is no longer the domain of science fiction. With private equity pouring billions into orbital infrastructure, the focus is shifting to surface operations on the Moon and Mars. While extracting **Helium-3** and **water ice** remains the primary economic driver, a niche but high-stakes sector is emerging: the search for extraterrestrial **fossils** and biosignatures.
 
 ### The Resource Case: Energy and Materials
 

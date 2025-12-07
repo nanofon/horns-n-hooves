@@ -2,11 +2,8 @@
 title: "Netflix Acquires Warner Bros. Discovery and HBO"
 description: "A seismic shift in media: Netflix cements its dominance by acquiring the legendary Warner Bros. studio and the prestige brand of HBO."
 publishDate: 2025-11-30
+image: "/images/analytics/netflix-acquisition.svg"
 ---
-
-## The Streaming Wars Have a Winner
-
-In a move that has sent shockwaves through the entertainment industry and Wall Street alike, **Netflix (NFLX)** has officially entered into a definitive agreement to acquire **Warner Bros. Discovery**, including the crown jewel asset, **HBO**.
 
 ### Deal Highlights
 

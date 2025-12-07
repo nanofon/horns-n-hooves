@@ -18,11 +18,8 @@ export const Chart = ({ data, labels }) => {
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: false,
+      returnPlugin: {
+        display: true,
       },
     },
     scales: {
@@ -45,5 +42,7 @@ export const Chart = ({ data, labels }) => {
 
   const chartData = { labels, datasets: [dataset] };
 
-  return <Line options={options} data={chartData} className={style.line} />;
+  return <div style={{ position: "relative" }}>
+    <Line options={options} data={chartData} className={style.line} />
+  </div>;
 };

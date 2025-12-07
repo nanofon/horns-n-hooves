@@ -45,12 +45,12 @@ export const PortfolioCard = ({
             {[...Array(RiskLevelID)].map((_) => "🔥").join("")}
           </span>
         </p>
-        <p>CAGR:{" "}
+        <p>Return:{" "}
           <span className={styles.number}>
             {Number(backtest.cagr * 100).toFixed(2)}%
           </span>
         </p>
-        <p>Max Drawdown:{" "}
+        <p>Drawdown:{" "}
           <span className={styles.number}>
             {Number(backtest.maxDrawdown * 100).toFixed(2)}%
           </span>
