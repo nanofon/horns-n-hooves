@@ -16,7 +16,9 @@ const { Content } = await entry.render();
 
 <Main title={entry.data.title}>
   <div class="article-container snap-section">
-    <a href="/analytics" class="back-link">&larr; Back to Analytics</a>
+    <a href={`${import.meta.env.BASE_URL}analytics`} class="back-link"
+      >&larr; Back to Analytics</a
+    >
 
     <header>
       <h1>{entry.data.title}</h1>
