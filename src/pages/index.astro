@@ -2,9 +2,12 @@
 import Main from "../layouts/Main.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import Pillars from "../components/Pillars.astro";
 import {
   COMPANY_NAME,
   HERO_TEXT_SHORT,
+  HERO_TEXT_FULL,
+  PILLARS,
   strategiesTitle,
   strategiesSubtitle,
   foundersTitle,
@@ -13,6 +16,8 @@ import {
 import Strategies from "../components/Strategies.astro";
 import Founders from "../components/Founders.astro";
 import PortfolioList from "../components/Portfolio/PortfolioList.astro";
+import ArticleList from "../components/Articles/ArticleList.astro";
+import { ContactForm } from "../components/ContactForm/ContactForm.jsx";
 
 const subtitle = "Asset management and analytics beyond the edge of investment";
 ---
@@ -21,6 +26,10 @@ const subtitle = "Asset management and analytics beyond the edge of investment";
   <Header title={COMPANY_NAME} subtitle={subtitle} />
   <Hero text={HERO_TEXT_SHORT} />
   <PortfolioList />
+  <Hero text={HERO_TEXT_FULL} />
+  <Pillars pillars={PILLARS} />
   <Strategies title={strategiesTitle} subtitle={strategiesSubtitle} />
+  <ArticleList limit={3} />
   <Founders title={foundersTitle} subtitle={foundersSubtitle} />
+  <ContactForm client:visible />
 </Main>

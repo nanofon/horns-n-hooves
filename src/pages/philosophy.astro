@@ -4,23 +4,21 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Pillars from "../components/Pillars.astro";
 import {
-    PILLARS,
-    HERO_TEXT_FULL,
-    strategiesTitle,
-    strategiesSubtitle,
-    foundersTitle,
-    foundersSubtitle,
+  PILLARS,
+  HERO_TEXT_FULL,
+  strategiesTitle,
+  strategiesSubtitle,
 } from "../constants.js";
 import Strategies from "../components/Strategies.astro";
-import Founders from "../components/Founders.astro";
+import ArticleList from "../components/Articles/ArticleList.astro";
 const title = "Investment Philosophy";
 const subtitle = "Disciplined. Systematic. Risk-Aware.";
 ---
 
 <Main title={title}>
-    <Header title={title} subtitle={subtitle} />
-    <Hero text={HERO_TEXT_FULL} />
-    <Pillars pillars={PILLARS} />
-    <Strategies title={strategiesTitle} subtitle={strategiesSubtitle} />
-    <Founders title={foundersTitle} subtitle={foundersSubtitle} />
+  <Header title={title} subtitle={subtitle} />
+  <Hero text={HERO_TEXT_FULL} />
+  <Pillars pillars={PILLARS} />
+  <Strategies title={strategiesTitle} subtitle={strategiesSubtitle} />
+  <ArticleList limit={3} />
 </Main>

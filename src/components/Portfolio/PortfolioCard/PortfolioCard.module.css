@@ -1,6 +1,5 @@
 .container {
-  background-color: var(--surface);
-  background-color: rgb(from var(--surface) r g b/0.9);
+  background-color: rgb(from var(--surface) r g b / 0.9);
   padding: 2rem;
   border-radius: var(--radius);
   text-decoration: none;
@@ -8,7 +7,6 @@
   flex-direction: column;
   height: auto; /* Allow card to size to content instead of stretching */
   box-sizing: border-box;
-  background-color: rgb(from var(--surface) r g b / 0.9);
   transition: all 0.2s ease-in-out;
 }
 
