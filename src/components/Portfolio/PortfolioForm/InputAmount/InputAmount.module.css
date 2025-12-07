@@ -6,41 +6,42 @@
   border-radius: var(--radius);
   color: var(--accent-secondary);
   transition: all 0.3s ease;
+  line-height: normal;
 }
 
-@media (hover: hover) {
+.numberWrapper:hover {
+  border: 1px solid var(--accent);
+}
+
+@media (hover: none) {
   .numberWrapper:hover {
-    color: var(--text);
-    transform: scale(1.05);
+    border: none;
+  }
+
+  .numberWrapper:active {
+    border: 1px solid var(--accent);
+    transition: all 0.2s ease;
   }
 }
 
-.numberWrapper:active {
-  color: var(--text);
-  transform: scale(1.05);
-}
-
 .amount {
-  font-size: 1.5rem;
   text-decoration: underline dotted;
   text-decoration-color: var(--accent);
   text-underline-offset: 4px;
-  margin: 0 0.2rem;
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 .amountInput {
-  font-size: 1.5rem;
-  width: 150px;
+  font-size: 1.2rem;
+  width: 7rem;
   background: transparent;
-  border: none;
-  border-bottom: 2px dotted var(--accent);
   color: inherit;
   text-align: center;
   font-family: inherit;
   /* Hide arrows in input[type=number] */
   -moz-appearance: textfield;
   appearance: textfield;
-  margin: 0 0.2rem;
 }
 
 .amountInput::-webkit-outer-spin-button,
@@ -52,11 +53,11 @@
 .controlBtn {
   border: none;
   background-color: transparent;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   padding: 0;
+  margin: 0;
   line-height: 1;
-  opacity: 0.8;
   transition: all 0.2s ease;
 }
 
@@ -66,16 +67,4 @@
 
 .increase {
   color: #4dff4d;
-}
-
-@media (hover: hover) {
-  .controlBtn:hover {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-.controlBtn:active {
-  opacity: 1;
-  transform: scale(0.9);
 }
