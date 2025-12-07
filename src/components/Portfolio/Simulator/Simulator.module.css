@@ -2,7 +2,7 @@
   margin-top: 2rem;
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   animation: slideUp 2s ease-in-out;
   scroll-snap-align: start;
   scroll-snap-stop: always;

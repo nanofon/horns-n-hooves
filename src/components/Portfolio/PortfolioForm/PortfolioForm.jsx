@@ -16,7 +16,10 @@ export const PortfolioForm = ({
   return (
     <div className={styles.container}>
       <h4>
-        If you invested{" "}
+        You would have <span className={`${styles.amount} ${styles.numberWrapper}`}>
+          {numToDollar(total)}
+        </span><br />
+        if you invested{" "}
         <InputAmount
           amount={InitialDeposit}
           onUp={() => setInitialDeposit(moreInt(InitialDeposit))}
@@ -36,10 +39,7 @@ export const PortfolioForm = ({
           onDn={() => setMonthlyContribution(lessInt(MonthlyContribution))}
           onChange={setMonthlyContribution}
         />{" "}
-        every month you would have
-        <span className={`${styles.amount} ${styles.numberWrapper}`}>
-          {numToDollar(total)}
-        </span>
+        monthly
       </h4>
     </div>
   );
