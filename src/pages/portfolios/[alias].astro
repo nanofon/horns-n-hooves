@@ -1,11 +1,8 @@
 ---
 import Main from "../../layouts/Main.astro";
-import Header from "../../components/Header.astro";
-import Pillars from "../../components/Pillars.astro";
 import { Simulator } from "../../components/Portfolio/Simulator/Simulator.jsx";
 import { getPortfolio, getPortfolios } from "../../server-api";
 import { portfolio as portfolioType } from "../../components/Portfolio/portfolio";
-import { PILLARS } from "../../constants";
 
 export async function getStaticPaths() {
   const portfolios: portfolioType[] = await getPortfolios();

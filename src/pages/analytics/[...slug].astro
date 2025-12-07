@@ -1,0 +1,140 @@
+---
+import { getCollection } from "astro:content";
+import Main from "../../layouts/Main.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("analytics");
+  return articles.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Main title={entry.data.title}>
+  <div class="article-container snap-section">
+    <a href="/analytics" class="back-link">&larr; Back to Analytics</a>
+
+    <header>
+      <h1>{entry.data.title}</h1>
+      <p class="date">
+        {
+          entry.data.publishDate.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </p>
+    </header>
+
+    <div class="content">
+      <Content />
+    </div>
+  </div>
+</Main>
+
+<style>
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    color: var(--text);
+    background-color: rgb(from var(--surface) r g b / 0.9);
+    border-radius: var(--radius);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+  }
+
+  .back-link:hover {
+    transform: translateX(-5px);
+  }
+
+  header {
+    margin-bottom: 3rem;
+    text-align: center;
+    border-bottom: 1px solid rgb(from var(--accent) r g b / 0.2);
+    padding-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--accent);
+  }
+
+  .date {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  /* Content Styling */
+  .content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  .content :global(h2) {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-secondary);
+  }
+
+  .content :global(h3) {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .content :global(p) {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+  }
+
+  .content :global(ul),
+  .content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    color: var(--text-secondary);
+  }
+
+  .content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .content :global(blockquote) {
+    border-left: 4px solid var(--accent);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text);
+    background-color: rgb(from var(--surface) r g b / 0.5);
+    padding: 1.5rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .content :global(strong) {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

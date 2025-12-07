@@ -1,0 +1,79 @@
+---
+import Main from "../layouts/Main.astro";
+import ArticleCard from "../components/ArticleCard/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+const articles = (await getCollection("analytics")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<Main title="Analytics">
+  <div class="content-wrapper">
+    <header class="header">
+      <h1>Market Analytics</h1>
+      <p class="subtitle">
+        Insights and observations from our quantitative desk
+      </p>
+    </header>
+
+    <div class="grid">
+      {articles.map((article) => <ArticleCard article={article} />)}
+    </div>
+  </div>
+</Main>
+
+<style>
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-in;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding-bottom: 3rem;
+    animation: slideUp 0.8s ease-out;
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      color: transparent;
+    }
+    to {
+      color: var(--accent);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

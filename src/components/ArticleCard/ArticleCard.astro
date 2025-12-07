@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  article: CollectionEntry<"analytics">;
+};
+
+const { article } = Astro.props;
+const { title, description, publishDate } = article.data;
+---
+
+<a href={`/analytics/${article.slug}`} class="container">
+  <h3 class="title">{title}</h3>
+  <p class="date">
+    {
+      publishDate.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
+  </p>
+  <p class="description">{description}</p>
+  <div class="footer">
+    <span>Read article</span>
+    <span class="arrow">&rarr;</span>
+  </div>
+</a>
+
+<style>
+  .container {
+    background-color: var(--surface);
+    background-color: rgb(from var(--surface) r g b / 0.9);
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    color: var(--text);
+    border: 1px solid transparent;
+  }
+
+  .container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgb(from var(--accent) r g b / 0.2);
+    border-color: var(--accent);
+  }
+
+  .title {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .date {
+    font-size: 0.9rem;
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+
+  .container:hover .arrow {
+    transform: translateX(5px);
+  }
+</style>
