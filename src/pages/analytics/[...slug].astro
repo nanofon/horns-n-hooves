@@ -24,7 +24,7 @@ const { Content } = await entry.render();
       {
         entry.data.image && (
           <img
-            src={`${import.meta.env.BASE_URL}${entry.data.image}`}
+            src={`${import.meta.env.BASE_URL}${entry.data.image.replace(/^\//, "")}`}
             alt={entry.data.title}
             class="hero-image"
           />
