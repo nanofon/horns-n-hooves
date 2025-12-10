@@ -1,0 +1,32 @@
+.container {
+  background-color: rgb(from var(--surface) r g b / 0.9);
+  padding: 2rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgb(from var(--accent) r g b / 0.8);
+}
+
+.footer {
+  margin: 0 0 0 auto;
+  font-size: 1.2rem;
+  color: var(--accent-secondary);
+}
+
+.number {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+select {
+  background-color: var(--background);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--accent);
+}

@@ -3,13 +3,13 @@ import Main from "../layouts/Main.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import { HERO_TEXT_SHORT } from "../constants";
-import PortfolioList from "../components/Portfolio/PortfolioList.astro";
-const title="Our portfolios";
-const subtitle="Discretionary managed funds";
+import { PortfolioList } from "../components/Portfolio/List";
+import { PortfolioPage } from "../components/Portfolio/PortfolioPage.js";
+
+const title = "Our portfolios";
+const subtitle = "Discretionary managed funds";
 ---
 
-<Main title="Portfolios">
-  <Header title={title} subtitle={subtitle} />
-  <PortfolioList />
-  <Hero text={HERO_TEXT_SHORT} />
+<Main title={title}>
+  <PortfolioPage client:load />
 </Main>

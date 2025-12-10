@@ -1,9 +1,7 @@
 ---
 import ThemeToggler from "./ThemeToggler.astro";
 import Logo from "./Logo.astro";
-import { getPortfolios } from "../../server-api.js";
-
-const portfolios = await getPortfolios();
+import { DropDownPortfolios } from "./DropDownPortfolios";
 ---
 
 <nav>
@@ -39,15 +37,6 @@ const portfolios = await getPortfolios();
           </svg>
         </button>
       </div>
-      <ul class="dropdown-menu" aria-label="Portfolios submenu">
-        {
-          portfolios.map((portfolio) => (
-            <li>
-              <a href={`./portfolios/${portfolio.Alias}`}>{portfolio.Name}</a>
-            </li>
-          ))
-        }
-      </ul>
     </li>
     <li>
       <a href="./philosophy">Philosophy</a>
@@ -292,7 +281,7 @@ const portfolios = await getPortfolios();
 <script>
   const { pathname } = window.location;
   const activeNavigationElement = document.querySelector(
-    `nav a[href="${pathname}"]`,
+    `nav a[href="${pathname}"]`
   );
 
   if (activeNavigationElement) {

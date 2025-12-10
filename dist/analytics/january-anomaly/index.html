@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/png" href="./logo.png"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.15.3"><meta name="description" content="RS Asset Management asset management website"><title>RS Asset Management: The January Effect: Capital Market Anomalies</title><script>
+      const COLOR_MODE = "COLOR_MODE";
+      const DARK_THEME_CLASS = "dark";
+      const LIGHT_THEME = "light";
+      const DARK_THEME = "dark";
+
+      const rootElement = document.documentElement;
+
+      const getInitialColorMode = () => {
+        const savedColorMode = window.localStorage.getItem(COLOR_MODE);
+        if (savedColorMode) {
+          return savedColorMode;
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+          return DARK_THEME;
+        }
+        return LIGHT_THEME;
+      };
+
+      const initialColorMode = getInitialColorMode();
+
+      const setInitialColorMode = (mode) => {
+        if (mode === LIGHT_THEME) {
+          rootElement.classList.remove(DARK_THEME_CLASS);
+        } else {
+          rootElement.classList.add(DARK_THEME_CLASS);
+        }
+      };
+
+      setInitialColorMode(initialColorMode);
+    </script><base href="/"><link rel="stylesheet" href="/_astro/about.BB68XvLy.css">
+<style>.article-container[data-astro-cid-5lzpdgfh]{max-width:800px;margin:0 auto;padding:2rem 1rem;color:var(--text);background-color:rgb(from var(--surface) r g b / .9);border-radius:var(--radius)}.back-link[data-astro-cid-5lzpdgfh]{display:inline-block;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-weight:500;transition:transform .2s ease}.back-link[data-astro-cid-5lzpdgfh]:hover{transform:translate(-5px)}header[data-astro-cid-5lzpdgfh]{margin-bottom:3rem;text-align:center;border-bottom:1px solid rgb(from var(--accent) r g b / .2);padding-bottom:2rem}.hero-image[data-astro-cid-5lzpdgfh]{width:100%;max-height:400px;object-fit:cover;border-radius:var(--radius);margin-bottom:2rem}h1[data-astro-cid-5lzpdgfh]{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;color:var(--accent)}.date[data-astro-cid-5lzpdgfh]{font-size:1rem;color:var(--text-secondary);font-style:italic}.content[data-astro-cid-5lzpdgfh]{line-height:1.8;font-size:1.1rem}.content[data-astro-cid-5lzpdgfh] h2{font-size:1.8rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--accent-secondary)}.content[data-astro-cid-5lzpdgfh] h3{font-size:1.4rem;margin-top:2rem;margin-bottom:1rem;color:var(--text)}.content[data-astro-cid-5lzpdgfh] p{margin-bottom:1.5rem;color:var(--text-secondary)}.content[data-astro-cid-5lzpdgfh] ul,.content[data-astro-cid-5lzpdgfh] ol{margin-bottom:1.5rem;padding-left:2rem;color:var(--text-secondary)}.content[data-astro-cid-5lzpdgfh] li{margin-bottom:.5rem}.content[data-astro-cid-5lzpdgfh] blockquote{border-left:4px solid var(--accent);padding-left:1.5rem;margin:2rem 0;font-style:italic;color:var(--text);background-color:rgb(from var(--surface) r g b / .5);padding:1.5rem;border-radius:0 var(--radius) var(--radius) 0}.content[data-astro-cid-5lzpdgfh] strong{color:var(--text);font-weight:600}@media(max-width:768px){h1[data-astro-cid-5lzpdgfh]{font-size:2rem}}
+</style></head> <body> <div class="parallax"></div> <div class="snap-container"> <nav data-astro-cid-b2er75ro> <svg class="svg" width="3rem" height="3rem" viewBox="0 0 150.00 150.00" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)" data-astro-cid-tg2kdf3x> <g data-astro-cid-tg2kdf3x> <path class="bull" d="M121.362 80.91L131.781 120H118.862L113.981 102H75V120H62.5V102L44.95 89.364C37.7 97.896 27.025 105 18.75 105V76.176V76.002L6.25 72V66H33.0687L55.2938 50.22C57.3313 48.834 59.8125 48 62.5 48C64.2625 48 65.9312 48.36 67.45 48.99L116.537 72H120.212C123.862 72 128.125 70.428 128.125 66C128.125 61.572 123.862 60 120.212 60C110.475 60 103.125 52.26 103.125 42V24H109.375L118.75 42H112.5C112.5 47.214 115.75 51 120.212 51C130.231 51 137.5 57.306 137.5 66C137.5 74.346 130.762 80.436 121.362 80.91Z" data-astro-cid-tg2kdf3x></path> <path class="tail" d="M103.125 24H109.375L118.75 42H103.125V24Z" data-astro-cid-tg2kdf3x></path> <path class="horn" d="M31.25 72C31.25 75.312 28.45 78 25 78L6.25 72V66H25C28.45 66 31.25 68.688 31.25 72Z" data-astro-cid-tg2kdf3x></path> </g></svg>  <button class="hamburger-toggle" aria-label="Toggle navigation menu" data-astro-cid-b2er75ro> <span class="bar" data-astro-cid-b2er75ro></span> <span class="bar" data-astro-cid-b2er75ro></span> <span class="bar" data-astro-cid-b2er75ro></span> </button> <ul class="nav-links" data-astro-cid-b2er75ro> <li data-astro-cid-b2er75ro> <a href="./" data-astro-cid-b2er75ro>Home</a> </li> <li class="dropdown" data-astro-cid-b2er75ro> <div class="dropdown-header" data-astro-cid-b2er75ro> <a href="./portfolios" class="dropdown-link" data-astro-cid-b2er75ro>Portfolios</a> <button class="dropdown-toggle-btn" aria-label="Toggle portfolios menu" aria-expanded="false" data-astro-cid-b2er75ro> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-b2er75ro> <polyline points="6 9 12 15 18 9" data-astro-cid-b2er75ro></polyline> </svg> </button> </div> <ul class="dropdown-menu" aria-label="Portfolios submenu" data-astro-cid-b2er75ro> <li data-astro-cid-b2er75ro> <a href="./portfolios/sp500" data-astro-cid-b2er75ro>S&amp;P 500 Buy-n-Hold</a> </li><li data-astro-cid-b2er75ro> <a href="./portfolios/stocksbonds6040" data-astro-cid-b2er75ro>Stocks-Bonds 60/40</a> </li><li data-astro-cid-b2er75ro> <a href="./portfolios/sample01" data-astro-cid-b2er75ro>Sample Portfolio 01</a> </li><li data-astro-cid-b2er75ro> <a href="./portfolios/multifactorquality" data-astro-cid-b2er75ro>Multifactor Quality Stocks + Market Regime</a> </li> </ul> </li> <li data-astro-cid-b2er75ro> <a href="./philosophy" data-astro-cid-b2er75ro>Philosophy</a> </li> <li data-astro-cid-b2er75ro> <a href="./analytics" data-astro-cid-b2er75ro>Analytics</a> </li> <li data-astro-cid-b2er75ro> <a href="./about" data-astro-cid-b2er75ro>About us</a> </li> <li data-astro-cid-b2er75ro> <a href="./contact" data-astro-cid-b2er75ro>Contact</a> </li> </ul> <button area-label="Theme toggler" data-theme-toggle data-astro-cid-hjzcdhxx> <svg width="30px" xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24" data-astro-cid-hjzcdhxx> <path class="sun" fill-rule="evenodd" d="M12 17.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11zm0 1.5a7 7 0
+      100-14 7 7 0 000 14zm12-7a.75.75 0 01-.75.75h-2.5a.75.75 0
+      010-1.5h2.5A.75.75 0 0124 12zM4 12a.75.75 0 01-.75.75H.75a.75.75 0
+      010-1.5h2.5A.75.75 0 014 12zm16.485-8.485a.75.75 0 010 1.06l-1.768
+      1.768a.75.75 0 01-1.06-1.06l1.767-1.768a.75.75 0 011.061 0zM6.343
+      17.657a.75.75 0 010 1.06l-1.768 1.768a.75.75 0 11-1.06-1.06l1.767-1.768a.75.75 0
+      011.061 0zM12 0a.75.75 0 01.75.75v2.5a.75.75 0 01-1.5 0V.75A.75.75 0
+      0112 0zm0 20a.75.75 0 01.75.75v2.5a.75.75 0 01-1.5 0v-2.5A.75.75 0
+      0112 20zM3.515 3.515a.75.75 0 011.06 0l1.768 1.768a.75.75 0
+      11-1.06 1.06L3.515 4.575a.75.75 0 010-1.06zm14.142 14.142a.75.75 0
+      011.06 0l1.768 1.768a.75.75 0 01-1.06 1.06l-1.768-1.767a.75.75 0
+      010-1.061z" data-astro-cid-hjzcdhxx></path> <path class="moon" fill-rule="evenodd" d="M16.5 6c0 5.799-4.701 10.5-10.5 10.5-.426 0-.847-.026-1.26-.075A8.5 8.5 0 1016.425 4.74c.05.413.075.833.075 1.259zm-1.732-2.04A9.08 9.08 0 0114.999 6a9 9 0 01-11.04 8.768l-.004-.002a9.367 9.367 0 01-.78-.218c-.393-.13-.8.21-.67.602a9.938 9.938 0 00.329.855l.004.01A10.002 10.002 0 0012 22a10.002 10.002 0 004.015-19.16l-.01-.005a9.745 9.745 0 00-.855-.328c-.392-.13-.732.276-.602.67a8.934 8.934 0 01.218.779l.002.005z" data-astro-cid-hjzcdhxx></path> </svg> </button>  <script type="module">const n="COLOR_MODE",t="dark",s="light",l="dark",o=document.querySelector("[data-theme-toggle]"),e=document.documentElement;o&&o.addEventListener("click",()=>{e.classList.toggle(t);const c=e.classList.contains(t)?l:s;window.localStorage.setItem(n,c)});</script> </nav>  <script type="module">const{pathname:i}=window.location,c=document.querySelector(`nav a[href="${i}"]`);c&&c.classList.add("active");document.addEventListener("DOMContentLoaded",()=>{const o=document.querySelector(".hamburger-toggle"),e=document.querySelector(".nav-links");o.addEventListener("click",()=>{e.classList.toggle("open"),o.classList.toggle("is-active")}),e.querySelectorAll("a").forEach(n=>{n.addEventListener("click",s=>{e.classList.contains("open")&&(e.classList.remove("open"),o.classList.remove("is-active"))})});const t=document.querySelector(".dropdown-toggle-btn");t&&t.addEventListener("click",n=>{n.stopPropagation();const s=t.closest(".dropdown");s.classList.toggle("active");const a=s.classList.contains("active");t.setAttribute("aria-expanded",a.toString())})});</script>  <div class="article-container snap-section" data-astro-cid-5lzpdgfh> <a href="/analytics" class="back-link" data-astro-cid-5lzpdgfh>&larr; Back to Analytics</a> <header data-astro-cid-5lzpdgfh> <img src="/images/analytics/january-anomaly.svg" alt="The January Effect: Capital Market Anomalies" class="hero-image" data-astro-cid-5lzpdgfh> <h1 data-astro-cid-5lzpdgfh>The January Effect: Capital Market Anomalies</h1> <p class="date" data-astro-cid-5lzpdgfh> December 7, 2025 </p> </header> <div class="content" data-astro-cid-5lzpdgfh> <h3 id="what-is-it">What is it?</h3>
+<p>Historically, small-cap stocks have tended to outperform large-cap stocks in January. This phenomenon is often attributed to <strong>tax-loss harvesting</strong> in December.</p>
+<ol>
+<li><strong>December Selling</strong>: Investors sell losing positions in December to offset capital gains tax liabilities. This selling pressure depresses the prices of these stocks, often pushing them below their fundamental value.</li>
+<li><strong>January Buying</strong>: Once the new tax year begins in January, investors rush back into the market to repurchase these discounted assets. This surge in demand drives prices up, creating a temporary period of outperformance.</li>
+</ol>
+<h3 id="implications-for-investors">Implications for Investors</h3>
+<p>While market efficiency has eroded some of this edge over recent decades as algorithms anticipate the move, the structural drivers—taxes and portfolio rebalancing—remain real.</p>
+<ul>
+<li><strong>Liquidity considerations</strong>: The effect is often more pronounced in less liquid markets.</li>
+<li><strong>Sector rotation</strong>: It typically coincides with a rotation back into riskier assets after year-end “window dressing” by institutional managers.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: Past performance is not indicative of future results. However, being aware of these seasonal flows is crucial for effective trade execution and risk management during the winter months.</p>
+</blockquote> </div> </div>  <footer data-astro-cid-sz7xmlte>
+&copy; RS Asset Management, 2025
+</footer>  </div> <script type="module">const t=document.querySelector(".parallax"),o=document.querySelector(".snap-container");t&&o&&o.addEventListener("scroll",()=>{const e=-o.scrollTop;t.style.transform=`translateY(${e*.5}px)`});</script></body></html> 
