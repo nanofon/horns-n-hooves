@@ -65,16 +65,12 @@ export const DropDownPortfolios = () => {
   );
 
   return (
-    // The list item container. We use the 'active' class for mobile drawer visibility.
-    // We use the 'dropdown' class to hook into your existing CSS.
-    <li
-      ref={dropdownRef}
-      className={styles.dropdown + (isOpen ? "active" : "")}
+    <div
+      className={`${styles.dropdown} ${isOpen ? "active" : ""}`}
       onMouseEnter={() => handleHover(true)}
       onMouseLeave={() => handleHover(false)}
     >
       <div className={styles.dropdownHeader}>
-        {/* Main link to the list page */}
         <a
           href="./portfolios"
           className={styles.dropdownLink}
@@ -83,7 +79,6 @@ export const DropDownPortfolios = () => {
           Portfolios
         </a>
 
-        {/* Mobile Toggle Button */}
         <button
           className={styles.dropdownToggleBtn}
           aria-label="Toggle portfolios menu"
@@ -94,15 +89,10 @@ export const DropDownPortfolios = () => {
         </button>
       </div>
 
-      {/* Dropdown Menu */}
-      <ul className={styles.dropdownMenu} aria-label="Portfolios submenu">
-        {isLoading ? (
-          <li>
-            <a href="#">Loading...</a>
-          </li>
-        ) : (
-          portfolios.map((p) => (
-            <li key={p.Alias}>
+      {!isLoading && (
+        <ul className={styles.dropdownMenu} aria-label="Portfolios submenu">
+          {portfolios.map((p) => (
+            <li key={p.Alias} className={styles.dropdownMenuItem}>
               <a
                 href={`./portfolios?alias=${encodeURIComponent(p.Alias)}`}
                 className={styles.dropdownMenuLink}
@@ -111,9 +101,9 @@ export const DropDownPortfolios = () => {
                 {p.Name}
               </a>
             </li>
-          ))
-        )}
-      </ul>
-    </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };

@@ -31,7 +31,7 @@ export const PortfolioList = () => {
       {portfolios.map((portfolio) => (
         <a
           href={`./portfolios?alias=${encodeURIComponent(portfolio.Alias)}`}
-          className={styles.container}
+          className={styles.link}
         >
           <PortfolioCard
             portfolio={portfolio}
